@@ -1,8 +1,16 @@
 <% if self.sass -%>
+<% if self.jammit -%>
 guard "sass", :input => "sass", :output => "tmp"
+<% else -%>
+guard "sass", :input => "sass", :output => "public/stylesheets"
+<% end -%>
 <% end -%>
 <% if self.coffeescript -%>
+<% if self.jammit -%>
 guard "coffeescript", :input => "coffeescripts", :output => "tmp"
+<% else -%>
+guard "coffeescript", :input => "coffeescripts", :output => "public/javascripts"
+<% end -%>
 <% if self.testing -%>
 guard "coffeescript", :input => "spec", :output => "spec"
 <% end -%>

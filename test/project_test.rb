@@ -131,8 +131,54 @@ class ProjectTest < Test::Unit::TestCase
     assert Pathname.new(File.join(@folder, "Guardfile")).read.include?('guard "coffeescript"')
   end
 
+  def test_puts_coffeescript_in_js_folder_without_jammit
+    text = 'guard "coffeescript", :input => "coffeescripts", :output => "public/javascripts"'
+    p = QEDProject::Project.new(@folder, :coffeescript => true)
+    p.generate
+    source = Pathname.new(File.join(@folder, "Guardfile")).read
+    assert source.include?(text)  
+  end  
   
+  def test_puts_coffeescript_in_tmp_folder_with_jammit
+    text = 'guard "coffeescript", :input => "coffeescripts", :output => "tmp"'
+    p = QEDProject::Project.new(@folder, :coffeescript => true, :jammit => true)
+    p.generate
+    source = Pathname.new(File.join(@folder, "Guardfile")).read
+    assert source.include?(text)
+  end
 
+  def test_puts_sass_in_css_folder_without_jammit
+    text = 'guard "sass", :input => "sass", :output => "public/stylesheets"'
+    p = QEDProject::Project.new(@folder, :sass => true)
+    p.generate
+    source = Pathname.new(File.join(@folder, "Guardfile")).read
+    assert source.include?(text)  
+  end  
+  
+  def test_puts_sass_in_tmp_folder_with_jammit
+    text = 'guard "sass", :input => "sass", :output => "tmp"'
+    p = QEDProject::Project.new(@folder, :sass => true, :jammit => true)
+    p.generate
+    
+    source = Pathname.new(File.join(@folder, "Guardfile")).read
+    assert source.include?(text)
+    
+  end
+
+  def test_need_guardfile_with_sass
+    p = QEDProject::Project.new(@folder, :sass => true)
+    assert p.needs_guardfile?
+  end
+  
+  def test_need_guardfile_with_coffee
+    p = QEDProject::Project.new(@folder, :coffeescript => true)
+    assert p.needs_guardfile?
+  end
+  def test_need_guardfile_with_jammit
+    p = QEDProject::Project.new(@folder, :jammit => true)
+    assert p.needs_guardfile?
+  end
+  
 
   def test_no_tests_when_not_specified
     p = QEDProject::Project.new(@folder)
