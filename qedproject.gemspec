@@ -53,7 +53,9 @@ Gem::Specification.new do |s|
     "templates/sampleSpec.coffee",
     "templates/sampleSpec.js",
     "templates/suite.html",
-    "templates/index.html"
+    "templates/index.html",
+    "templates/Rakefile"
+    
   
   ]
   s.executables   = "qedproject"
