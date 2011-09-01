@@ -1,0 +1,10 @@
+stylesheets:
+  style.css:
+  <% self.css_assets.each do |lib| -%>
+  - <%=File.join(self.css_path, lib) %>
+  <% end -%>
+javascripts:
+  app.js:
+  <% self.js_assets.each do |lib| -%>
+  - <%=File.join(self.js_path, lib) %>
+  <% end -%>

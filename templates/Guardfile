@@ -1,0 +1,21 @@
+<% if self.sass -%>
+guard "sass", :input => "sass", :output => "tmp"
+<% end -%>
+<% if self.coffeescript -%>
+guard "coffeescript", :input => "coffeescripts", :output => "tmp"
+<% if self.testing -%>
+guard "coffeescript", :input => "spec", :output => "spec"
+<% end -%>
+<% end -%> 
+<% if self.jammit -%>
+guard "jammit" do
+watch(/^javascripts\\/(.*)\.js/)
+watch(/^stylesheets\\/(.*)\.css/)
+<% if self.coffeescript -%>
+watch(/^tmp\\/(.*)\\.js/)
+<% end -%>
+<% if self.sass -%>
+watch(/^tmp\\/(.*)\\.css/)
+<% end -%>
+end
+<% end -%>

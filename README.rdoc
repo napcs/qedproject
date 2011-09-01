@@ -1,0 +1,62 @@
+=QEDProject
+==Modern web project generator
+
+QEDProject creates a simple web project skeleton with support for Sass and CoffeeScript
+as well as asset packaging. It's a tool I wrote to make things easier for me, and
+if you like it, I'd love to hear how you're using it.
+
+== Usage
+
+Generate a simple web project
+
+    qedproject myproject
+    
+Generate a simple web project with CoffeeScript and Sass support, using Guard 
+to monitor files for changes. Places outputs in public/javascripts and
+public/stylesheets by default.
+
+    qedproject myproject -c -s
+    
+While developing, use <tt>guard</tt> to update the files.
+    
+Generate a project that minifies CSS and JS files using Jammit. 
+Creates the asset configuration file and a Guardfile.
+
+    qedproject myproject -a
+    
+Create a project with CoffeeScript, Sass, and asset packaging support,
+using Guard.
+
+    qedproject myproject -c -s -a
+    
+== Including JavaScript libraries.
+
+Create a new project using jQuery
+
+    qedproject myproject -l jquery
+    
+Create a new project using jQuery and Backbone
+
+    qedproject myproject -l jquery,backbone
+    
+Create a new project using jQuery, Backbone, jQery Templates, 
+but also with Sass, CoffeeScript, and asset packaging.
+
+    qedproject myproject -l jquery,backbone -c -s -a
+    
+
+= Contributing
+
+Fork, send patches. Keep them small so I can pull them in.
+
+= Changes
+2011-09-02 - 0.0.3
+  * Index and Rakefile added
+  
+2011-09-01 - 0.0.2
+  * Birthday
+  
+
+= Licence:
+
+MIT license

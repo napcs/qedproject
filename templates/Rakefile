@@ -1,0 +1,25 @@
+SERVER = "yourhost.com"
+USERNAME = "yourusername"
+REMOTE_FOLDER = "/home/#{USERNAME}/yourhost.com"
+
+require 'net/scp'
+
+<% if self.needs_guardfile? -%>
+desc "compile CSS, js files"
+task :compile do
+  require 'guard'
+  Guard.setup
+  Guard::Dsl.evaluate_guardfile
+  Guard::guards.each{|guard| guard.run_all}
+end
+<% end -%>
+desc "Deploy web site"
+<% if self.needs_guardfile? -%>
+task :deploy => :compile do
+<% else -%>
+task :deploy do
+<% end -%>
+  Net::SCP.start(SERVER, USERNAME, {:port => PORT} ) do |scp|
+    scp.upload! "public", REMOTE_FOLDER, :recursive => true
+  end
+end

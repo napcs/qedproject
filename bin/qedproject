@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+require 'qedproject'
+
+libs = QEDProject::Libraries::Base.libs.keys
+
+
+require 'optparse'
+
+banner = "QEDProject #{QEDProject::VERSION} (C) 2011 Brian P. Hogan\n"
+banner << "-" * banner.length
+puts banner
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: qedproject <projectname> [options]"
+
+
+  opts.on('-s', '--sass', "Use SASS") do
+    options[:sass] = true
+  end
+
+  opts.on('-c', '--coffee', "Use Coffeescript") do
+    options[:coffeescript] = true
+  end
+  
+  opts.on('-a', '--assets', "Use Jammit to manage assets") do
+    options[:jammit] = true
+  end
+    
+  opts.on('-t', '--testing', "Set up testing with Jasmine") do
+    options[:testing] = true
+  end
+
+  opts.on("-l", "--libs [LIBRARIES]", "comma-separated list of libraries to include.\nLibraries are: #{libs.join(",")}") do |libs|
+    options[:libs] = libs.split(",").collect{ |f| f.to_sym }
+  end
+end.parse!
+options[:verbose] = true 
+project = ARGV[0]
+
+if project.nil?
+  puts "Specify a project. Use qedproject -h for options."
+else
+  QEDProject::Project.create(project, options)
+end
+
