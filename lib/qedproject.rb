@@ -7,3 +7,8 @@ require "qedproject/libraries/knockout"
 require "qedproject/libraries/jquerytmpl"
 require "qedproject/libraries/skeleton"
 require "qedproject/project"
+
+module QEDProject
+  class BadLibraryError < RuntimeError
+  end
+end

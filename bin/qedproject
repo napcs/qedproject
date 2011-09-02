@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 require 'qedproject'
 
-libs = QEDProject::Libraries::Base.libs.keys
-
-
 require 'optparse'
 
 banner = "QEDProject #{QEDProject::VERSION} (C) 2011 Brian P. Hogan\n"
@@ -11,7 +8,7 @@ banner << "-" * banner.length
 puts banner
 
 options = {}
-
+LIBRARIES = QEDProject::Libraries::Base.libs.keys
 OptionParser.new do |opts|
   opts.banner = "Usage: qedproject <projectname> [options]"
 
@@ -32,7 +29,7 @@ OptionParser.new do |opts|
     options[:testing] = true
   end
 
-  opts.on("-l", "--libs [LIBRARIES]", "comma-separated list of libraries to include.\nLibraries are: #{libs.join(",")}") do |libs|
+  opts.on("-l", "--libs [LIBRARIES]", "comma-separated list of libraries to include.\nLibraries are: #{LIBRARIES.join(",")}") do |libs|
     options[:libs] = libs.split(",").collect{ |f| f.to_sym }
   end
 end.parse!
@@ -42,6 +39,11 @@ project = ARGV[0]
 if project.nil?
   puts "Specify a project. Use qedproject -h for options."
 else
-  QEDProject::Project.create(project, options)
+  begin
+    QEDProject::Project.create(project, options)
+  rescue QEDProject::BadLibraryError => e
+    puts e.message
+    puts "QEDProject supports #{LIBRARIES.join(",")}"
+  end
 end
 

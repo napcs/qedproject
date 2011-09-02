@@ -50,8 +50,9 @@ but also with Sass, CoffeeScript, and asset packaging.
 Fork, send patches. Keep them small so I can pull them in.
 
 = Changes
-2011-09-02 - 0.0.3
+2011-09-02 - 0.0.4
   * Index and Rakefile added
+  * Fixed issue with bad libraries
   
 2011-09-01 - 0.0.2
   * Birthday

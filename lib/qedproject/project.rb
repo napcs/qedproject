@@ -39,31 +39,36 @@ module QEDProject
     # the project should contain. Good for creating asset lists
     # and loading files in rendered templates                                    
     def js_assets
-      if libs
-        libs.inject([]) do |original, lib|
-           original += QEDProject::Libraries::Base.libs[lib].js_files if QEDProject::Libraries::Base.libs[lib].respond_to?(:js_files)
-        end 
-      else
-        []
-      end
+      libs.inject([]) do |original, lib|
+        if QEDProject::Libraries::Base.libs[lib].respond_to?(:js_files)
+           original += QEDProject::Libraries::Base.libs[lib].js_files 
+        else
+          original
+        end
+      end 
     end
     
     # Convenience method for showing all of the css files that 
     # the project should contain. Good for creating asset lists
     # and loading files in rendered templates
     def css_assets
-      if libs
-        libs.inject([]) do |original, lib|
-          original += QEDProject::Libraries::Base.libs[lib].css_files if QEDProject::Libraries::Base.libs[lib].respond_to?(:css_files)
+      libs.inject([]) do |original, lib|
+        if QEDProject::Libraries::Base.libs[lib].respond_to?(:css_files)
+          original += QEDProject::Libraries::Base.libs[lib].css_files 
+        else
+          original
         end
-      else
-        []
       end
     end                                     
 
     # Sets instance methods with values from the options hash.
     def process_options(options)
-      self.libs = options[:libs]
+      self.libs = options[:libs] || []
+      
+      libs.each do |lib|
+        raise QEDProject::BadLibraryError, "#{lib} is not a valid library" unless QEDProject::Libraries::Base.libs.include? lib
+      end
+      
       self.jammit = options[:jammit]
       self.sass = options[:sass]
       self.coffeescript = options[:coffeescript]
@@ -148,15 +153,11 @@ module QEDProject
     # Loop through the libraries the user added
     # and run their generate methods
     # which pulls in the additional optional files.
-    def get_libraries 
+    def get_libraries
       libs.each do |lib|
-         library = QEDProject::Libraries::Base.libs[lib]
-         if library
-           l = library.new(self)
-           l.generate!
-         else
-           puts "Unsupported library - #{lib}"
-         end
+        library = QEDProject::Libraries::Base.libs[lib]
+        l = library.new(self)
+        l.generate!
       end
     end
 
