@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "lib/qedproject/libraries/knockout.rb",
     "lib/qedproject/libraries/jquerytmpl.rb",
     "lib/qedproject/libraries/skeleton.rb",
+    "lib/qedproject/plugins.rb",
     "vendor/backbone/VERSION",
     "vendor/backbone/backbone-min.js",
     "vendor/backbone/json2.js",

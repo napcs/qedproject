@@ -13,15 +13,27 @@ module QEDProject
         # when creating the adapter.
         # Adds the library and class to QEDProject::Libraries::Base.libs hash
         # and also creates a getter method on the adapter instance
-        def library(name)
+        def library(name, base_path = __FILE__)          
           QEDProject::Libraries::Base.libs ||= {}
           QEDProject::Libraries::Base.libs[name] = self
           class_eval do
             define_method :library do
               name
             end
+            
+            define_method :vendor_root do
+              File.expand_path("../../../../vendor", base_path)
+            end
+            
           end
         end 
+        
+        def depends_on(libraries)
+          m = class << self; self; end
+          m.send :define_method, :dependencies do
+            libraries
+          end
+        end
         
         def set_js_files(files)
           # define class method
@@ -72,7 +84,8 @@ module QEDProject
 
       def initialize(project) 
         @project = project
-        @lib_root = File.join(@project.vendor_root, self.library.to_s)
+        
+        @lib_root = File.join(self.vendor_root, self.library.to_s)
         @template_root = File.join(@lib_root, "templates")
       end
       

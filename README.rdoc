@@ -45,11 +45,74 @@ but also with Sass, CoffeeScript, and asset packaging.
     qedproject myproject -l jquery,backbone -c -s -a
     
 
+= Testing with Jasmine
+
+If you'd like to create projects where you can do Jasmine testing, use the <tt>-t</tt> flag.
+
+    qedproject myproject -l jquery,backbone -c -s -a -t
+
+This will create a suite.html file in the spec folder, and will create 
+a sample spec. If you asked for CoffeeScript, the sample spec will be 
+written in CoffeeSript and the Guardfile will be modified to convert specs to
+js files.
+
+
+= Building Plugins
+Plugins should be gems that start with the prefix <tt>qedproject-</tt>.
+
+Assuming we're making a plugin called "qedproject-prototype" 
+for the Prototype library.
+
+Make a structure like this:
+
+    qedproject-prototype
+      lib/
+        plugins/
+          prototype.rb
+        qedproject-prototype.rb
+        version.rb
+     vendor/
+       prototype/
+         prototype.js
+
+Then your code will look like this for the prototype.rb file:
+
+    module QEDProject
+      module Plugins
+   
+        class Prototype < QEDProject::Libraries::Base
+    
+          library :prototype, __FILE__
+      
+          set_js_files ["prototype.js"]
+          #set_css_files  ["array", "of", "css", "files"]
+          #set_image_files ["array", "of", "image", "files"]
+
+          def generate!
+             super
+             # customizations of your own
+             # if you have no customizations, just don't implement generate! at all.
+          end
+         end 
+       
+      end
+    end
+    
+When your plugin is installed as a gem, QEDProject will detect it and attempt to load it. 
+It will actually load the gem itself, so you don't necessarily have to create a plugin
+with this - you could override any behavior you'd like.
+
 = Contributing
 
 Fork, send patches. Keep them small so I can pull them in.
 
+
+
 = Changes
+2011-09-03 - 0.0.6
+  * Libraries can now have dependencies
+  * Plugins can be developed as gems
+  
 2011-09-02 - 0.0.5
   * Fixed broken guardfile generation
   * Fixed indentation in generated files

@@ -55,4 +55,24 @@ class ProjectTest < ProjectTestCase
     }
   end
 
+  def test_js_assets_has_jquery_first
+    p = QEDProject::Project.new(@folder, :libs => [:jquerytmpl], :jammit => true)
+    assert p.js_assets[0].include?("jquery-1.6.2.min.js")
+    assert p.js_assets[1].include?("jquery.tmpl.min.js")
+  end
+  
+  def test_js_assets_has_jquery_first_and_only_includes_it_once_when_explicitly_requested_second
+    p = QEDProject::Project.new(@folder, :libs => [:jquerytmpl, :jquery], :jammit => true)
+    assert p.js_assets[0].include?("jquery-1.6.2.min.js")
+    assert p.js_assets[1].include?("jquery.tmpl.min.js")
+    assert_nil p.js_assets[2]
+    
+  end
+  
+  def test_js_assets_has_jquery_first_and_only_includes_it_once_when_explicitly_requested_first
+    p = QEDProject::Project.new(@folder, :libs => [:jquery, :jquerytmpl], :jammit => true)
+    assert p.js_assets[0].include?("jquery-1.6.2.min.js")
+    assert p.js_assets[1].include?("jquery.tmpl.min.js")
+    assert_nil p.js_assets[2]
+  end
 end
