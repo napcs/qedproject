@@ -1,19 +1,9 @@
-require 'rubygems'
-require 'test/unit'
-require 'lib/qedproject'
+require 'project_test_helper'
 
 
-class JammitTest < Test::Unit::TestCase 
+class JammitTest < ProjectTestCase
 
   require 'pathname'
-
-  def setup
-    @folder = "tmpproject"
-  end
-  
-  def teardown
-    FileUtils.rm_rf @folder
-  end
   
   def test_should_create_guardfile_with_jammit
     p = QEDProject::Project.new(@folder, :jammit => true)

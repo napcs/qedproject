@@ -1,19 +1,6 @@
-require 'rubygems'
-require 'test/unit'
-require 'lib/qedproject'
+require 'project_test_helper'
 
-
-class BackboneTest < Test::Unit::TestCase 
-
-  require 'pathname'
-  
-  def setup
-    @folder = "tmpproject"
-  end
-  
-  def teardown
-    FileUtils.rm_rf @folder
-  end
+class BackboneTest < ProjectTestCase
   
   def test_loads_backbone_into_index_page_when_specified
     p = QEDProject::Project.new(@folder, :libs => [:backbone])

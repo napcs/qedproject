@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Project</title>
-    <% if @project.jammit %>
+<% if @project.jammit -%>
     <link rel="stylesheet" href="assets/app.css">
-    <% else -%>
+<% else -%>
     <link rel="stylesheet" href="stylesheets/style.css">
-    <% end -%>
+<% end -%>
   
   </head>
   <body>
@@ -23,13 +23,12 @@
       culpa qui officia deserunt mollit anim id est laborum.
     </p>
     
-    
-    <% if @project.jammit %>
+<% if @project.jammit -%>
     <script src="assets/app.js"></script>
-    <% else -%>
-    <% @project.js_assets.each do |js| -%>
-     <script src="javascripts/<%=js %>"></script>
-    <% end -%>
-    <% end -%>  
+<% else -%>
+<% @project.js_assets.each do |js| -%>
+    <script src="javascripts/<%=js %>"></script>
+<% end -%>
+<% end -%>  
   </body>
 </html>

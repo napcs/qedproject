@@ -1,6 +1,4 @@
-require 'rubygems'
-require 'test/unit'
-require 'lib/qedproject'
+require 'project_test_helper'
 
 class Foo < QEDProject::Libraries::Base
  library :foo

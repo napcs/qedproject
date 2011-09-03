@@ -1,19 +1,6 @@
-require 'rubygems'
-require 'test/unit'
-require 'lib/qedproject'
+require 'project_test_helper'
 
-class SkeletonTest < Test::Unit::TestCase
-
-  require 'pathname'
-
-  def setup
-    @folder = "tmpproject"
-  end
-  
-  def teardown
-    FileUtils.rm_rf @folder
-  end
-
+class SkeletonTest < ProjectTestCase
   
   def test_adds_index_page
     p = QEDProject::Project.new(@folder, :libs => [:skeleton])

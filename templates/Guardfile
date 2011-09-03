@@ -17,13 +17,13 @@ guard "coffeescript", :input => "spec", :output => "spec"
 <% end -%> 
 <% if self.jammit -%>
 guard "jammit" do
-watch(/^javascripts\\/(.*)\.js/)
-watch(/^stylesheets\\/(.*)\.css/)
+  watch(/^javascripts\/(.*)\.js/)
+  watch(/^stylesheets\/(.*)\.css/)
 <% if self.coffeescript -%>
-watch(/^tmp\\/(.*)\\.js/)
+  watch(/^tmp\/(.*)\.js/)
 <% end -%>
 <% if self.sass -%>
-watch(/^tmp\\/(.*)\\.css/)
+  watch(/^tmp\/(.*)\.css/)
 <% end -%>
 end
 <% end -%>
