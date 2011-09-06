@@ -13,7 +13,9 @@ module QEDProject
 
       def generate!
         super
-        render_template_to_file "index.html", File.join(self.project.path, "public", "index.html"), binding
+        index_file = File.join(self.project.path, "public", "index.html")
+        FileUtils.rm_rf index_file if File.exist?(index_file)
+        render_template_to_file "index.html", index_file, binding
       end
 
     end

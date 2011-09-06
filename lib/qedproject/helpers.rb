@@ -1,5 +1,26 @@
 module QEDProject
   module Helpers
+    
+    # Copies a file - wraps FileUtils to print a nice message if verbose is on.
+    
+    def cp(source, destination, options = {})
+      verbose = options[:verbose] || false
+      FileUtils.cp source, destination
+      puts "Created #{File.join destination, File.basename(source)}" if verbose
+    end
+    
+    def cp_r(source, destination, options = {})
+      verbose = options[:verbose] || false
+      FileUtils.cp_r source, destination
+      puts "Created #{File.join destination, File.basename(source)}" if verbose
+    end
+    
+    def mkdir_p(destination, options = {})
+      FileUtils.mkdir_p destination
+      puts "Created folder #{destination}" if verbose
+    end
+    
+    
     # Reads a template from the file system,
     # evaluates it with ERB
     # places it in the output folder specified.

@@ -60,6 +60,10 @@ task :fetch_js do
   Rake::Task[:fetch_jquerytmpl].invoke
   Rake::Task[:fetch_backbone].invoke
   Rake::Task[:fetch_jquery].invoke
+  Rake::Task[:fetch_skeleton].invoke
+  Rake::Task[:fetch_jqm].invoke
+  Rake::Task[:fetch_jqueryui].invoke
+  
 
 end
 
@@ -89,6 +93,30 @@ task :fetch_jquery do
     `wget http://code.jquery.com/jquery-1.6.2.min.js`
     `echo 1.6.2 >> VERSION`
   end
+end
+
+
+task :fetch_jqm do
+  jqm = "vendor/jquerymobile"
+  FileUtils.mkdir_p jqm
+  Dir.chdir jqm do
+    `wget http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.zip`
+    `unzip -j jquery.mobile-1.0b2.zip`
+    `echo 1.0b2 >> VERSION`
+  end
+
+end
+
+task :fetch_jqueryui do
+  jqui = "vendor/jqueryui"
+  FileUtils.mkdir_p jqui
+  Dir.chdir jqui do
+    `wget http://jqueryui.com/download/jquery-ui-1.8.16.custom.zip`
+    `wget http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css`
+    `unzip -j jquery-ui-1.8.16.custom.zip`
+    `echo 1.8.16 >> VERSION`
+  end
+
 end
 
 

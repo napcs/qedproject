@@ -97,19 +97,19 @@ module QEDProject
       
       def copy_images
         self.image_files.each do |lib|
-          ::FileUtils.cp_r File.join(self.lib_root, lib), File.join(self.project.path, self.project.images_path), :verbose => self.project.verbose
+          cp_r File.join(self.lib_root, lib), File.join(self.project.path, self.project.images_path), :verbose => self.project.verbose
         end
       end
       
       def copy_css
         self.css_files.each do |lib|
-          ::FileUtils.cp_r File.join(self.lib_root, lib), File.join(self.project.path, self.project.css_path), :verbose => self.project.verbose
+          cp_r File.join(self.lib_root, lib), File.join(self.project.path, self.project.css_path), :verbose => self.project.verbose
         end
       end
 
       def copy_js
         self.js_files.each do |lib|
-          ::FileUtils.cp_r File.join(self.lib_root, lib), File.join(self.project.path, self.project.js_path), :verbose => self.project.verbose
+         cp_r File.join(self.lib_root, lib), File.join(self.project.path, self.project.js_path), :verbose => self.project.verbose
         end
       end
 

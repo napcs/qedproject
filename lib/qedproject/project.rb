@@ -117,8 +117,8 @@ module QEDProject
 
     # includes the Jasmine BDD framework for javascript testing
     def add_testing
-      FileUtils.mkdir_p File.join(self.path, "spec"), :verbose => self.verbose
-      FileUtils.cp_r File.join(self.vendor_root, "jasmine", "lib"), 
+      mkdir_p File.join(self.path, "spec"), :verbose => self.verbose
+      cp_r File.join(self.vendor_root, "jasmine", "lib"), 
                      File.join(self.path, "spec", "lib"), :verbose => self.verbose
     
 
@@ -145,15 +145,15 @@ module QEDProject
     #   spec/               * optional
     #   Guardfile           * optional
     def create_project_skeleton
-      ::FileUtils.mkdir_p( self.path, :verbose => self.verbose)
-      ::FileUtils.mkdir_p( File.join(self.path, "public"), :verbose => self.verbose)
-      ::FileUtils.mkdir_p( File.join(self.path, self.images_path), :verbose => self.verbose)
-      ::FileUtils.mkdir_p( File.join(self.path, "tmp"), :verbose => self.verbose)
-      ::FileUtils.mkdir_p( File.join(self.path, self.js_path), :verbose => self.verbose)
-      ::FileUtils.mkdir_p( File.join(self.path, self.css_path), :verbose => self.verbose)
-      ::FileUtils.mkdir_p( File.join(self.path, "config"), :verbose => self.verbose) if self.needs_config_folder?
-      ::FileUtils.mkdir_p( File.join(self.path, "coffeescripts"), :verbose => self.verbose) if self.coffeescript
-      ::FileUtils.mkdir_p( File.join(self.path, "sass"), :verbose => self.verbose) if self.sass
+      mkdir_p( self.path, :verbose => self.verbose)
+      mkdir_p( File.join(self.path, "public"), :verbose => self.verbose)
+      mkdir_p( File.join(self.path, self.images_path), :verbose => self.verbose)
+      mkdir_p( File.join(self.path, "tmp"), :verbose => self.verbose)
+      mkdir_p( File.join(self.path, self.js_path), :verbose => self.verbose)
+      mkdir_p( File.join(self.path, self.css_path), :verbose => self.verbose)
+      mkdir_p( File.join(self.path, "config"), :verbose => self.verbose) if self.needs_config_folder?
+      mkdir_p( File.join(self.path, "coffeescripts"), :verbose => self.verbose) if self.coffeescript
+      mkdir_p( File.join(self.path, "sass"), :verbose => self.verbose) if self.sass
     end
 
     # Loop through the libraries the user added

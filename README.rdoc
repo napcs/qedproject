@@ -109,6 +109,12 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2011-09-07 - 0.0.7
+  * Added JQuery Mobile support
+  * Refactored output 
+  * Fixed issue with assets file extensions
+  * Cleaned up tests
+
 2011-09-03 - 0.0.6
   * Libraries can now have dependencies
   * Plugins can be developed as gems

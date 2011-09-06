@@ -22,6 +22,24 @@ class SkeletonTest < ProjectTestCase
            read.include?('src="assets/app.js"')
   end
   
+  def test_uses_css_path_if_not_using_jammit
+    p = QEDProject::Project.new(@folder, :libs => [:skeleton])
+    p.generate
+    source = Pathname.new(File.join(@folder, "public", "index.html")).read
+    QEDProject::Libraries::Skeleton.css_files.each do |css|
+      assert source.include?("href=\"stylesheets/#{css}\"")
+    end
+  end
+  
+  def test_uses_js_path_if_not_using_jammit
+    p = QEDProject::Project.new(@folder, :libs => [:skeleton, :backbone])
+    p.generate
+    source = Pathname.new(File.join(@folder, "public", "index.html")).read
+    QEDProject::Libraries::Skeleton.js_files.each do |js|
+      assert source.include?("src=\"javascripts/#{js}\"")
+    end
+  end
+  
   def test_loads_backbone_if_not_using_jammit_if_backbone_is_specified
     p = QEDProject::Project.new(@folder, :libs => [:skeleton, :backbone])
     p.generate
@@ -29,8 +47,6 @@ class SkeletonTest < ProjectTestCase
     QEDProject::Libraries::Backbone.js_files.each do |js|
       assert source.include?("src=\"javascripts/#{js}\"")
     end
-
-    
   end
   
   
