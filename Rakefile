@@ -99,7 +99,7 @@ task :fetch_backbone do
     `wget http://documentcloud.github.com/underscore/underscore-min.js`
     `wget http://documentcloud.github.com/backbone/backbone-min.js`
     `wget --no-check-certificate https://raw.github.com/douglascrockford/JSON-js/master/json2.js`
-    `echo 1.5.3 >> VERSION
+    `echo 1.5.3 >> VERSION`
 
   end
 
