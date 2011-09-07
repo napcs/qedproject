@@ -6,8 +6,8 @@ module QEDProject
     
     include QEDProject::Helpers
     
-    attr_accessor :path, :libs, :coffeescript, :sass, :jammit,
-                  :js_path, :css_path, :images_path, :verbose, :testing,
+    attr_accessor :path, :libs, :coffeescript, :sass, :jammit, :public_dir,
+                  :js_path, :css_path, :images_path, :verbose, :testing, :skip_index,
                   :sorted_libs,
                   :css_assets, :js_assets
     # convenience method to create a new project.
@@ -74,19 +74,20 @@ module QEDProject
       self.libs = options[:libs] || []
       
       collect_libraries
-      
+      self.public_dir = options[:public_dir] || "public"
       self.jammit = options[:jammit]
       self.sass = options[:sass]
       self.coffeescript = options[:coffeescript]
       self.verbose = options[:verbose]
       self.testing = options[:testing]
+      self.skip_index = options[:skip_index]
     end
 
     # Set up the basic paths we'll use throughout
     def set_paths
-       self.images_path = File.join("public", "images")
-       self.js_path = self.jammit ? "javascripts" : File.join("public", "javascripts")
-       self.css_path = self.jammit ? "stylesheets" : File.join("public", "stylesheets")
+       self.images_path = File.join(self.public_dir, "images")
+       self.js_path = self.jammit ? "javascripts" : File.join(self.public_dir, "javascripts")
+       self.css_path = self.jammit ? "stylesheets" : File.join(self.public_dir, "stylesheets")
     end
 
     # We need a guardfile if the user is using jammit, sass, or coffeescript.
@@ -107,7 +108,7 @@ module QEDProject
     # create a guardfile if needed
     def generate
       self.create_project_skeleton
-      self.create_index                             
+      self.create_index unless self.skip_index                         
       self.get_libraries if self.libs
       self.create_asset_file if self.jammit
       self.add_testing if self.testing
@@ -146,7 +147,7 @@ module QEDProject
     #   Guardfile           * optional
     def create_project_skeleton
       mkdir_p( self.path, :verbose => self.verbose)
-      mkdir_p( File.join(self.path, "public"), :verbose => self.verbose)
+      mkdir_p( File.join(self.path, self.public_dir), :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.images_path), :verbose => self.verbose)
       mkdir_p( File.join(self.path, "tmp"), :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.js_path), :verbose => self.verbose)
@@ -179,8 +180,8 @@ module QEDProject
     
     def create_index
       @project = self
-      render_template_to_file "index.html", File.join(self.path, "public", "index.html"), binding
-      puts "Created #{ File.join(self.path, "public", "index.html")}" if self.verbose
+      render_template_to_file "index.html", File.join(self.path, self.public_dir, "index.html"), binding
+      puts "Created #{ File.join(self.path, self.public_dir, "index.html")}" if self.verbose
     end
         
     def create_rakefile

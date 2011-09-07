@@ -16,7 +16,7 @@ module QEDProject
 
       def generate!
         super                                                                                     
-        render_template_to_file "index.html", File.join(self.project.path, "public", "index-mobile.html"), binding
+        render_template_to_file "index.html", File.join(self.project.path, self.project.public_dir, "index-mobile.html"), binding
       end
 
     end

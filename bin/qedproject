@@ -11,6 +11,7 @@ options = {}
 LIBRARIES = QEDProject::Libraries::Base.libs.keys
 OptionParser.new do |opts|
   opts.banner = "Usage: qedproject <projectname> [options]"
+  opts.banner << "\nAvailable Libraries are: #{LIBRARIES.join(",")}"
 
 
   opts.on('-s', '--sass', "Use SASS") do
@@ -28,10 +29,20 @@ OptionParser.new do |opts|
   opts.on('-t', '--testing', "Set up testing with Jasmine") do
     options[:testing] = true
   end
-
-  opts.on("-l", "--libs [LIBRARIES]", "comma-separated list of libraries to include.\nLibraries are: #{LIBRARIES.join(",")}") do |libs|
+  
+  opts.on('-p', '--public-dir [DIR]', 'Specify the name of the public folder') do |dir|
+    options[:public_dir] = dir
+  end
+  
+  opts.on("-l", "--libs [LIBRARIES]", "comma-separated list of libraries to include") do |libs|
     options[:libs] = libs.split(",").collect{ |f| f.to_sym }
   end
+  
+  opts.on('--skip-index', 'Skip creating a default index.html file') do
+    options[:skip_index] = true
+  end
+
+
 end.parse!
 options[:verbose] = true 
 project = ARGV[0]

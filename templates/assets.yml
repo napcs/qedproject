@@ -1,5 +1,5 @@
 stylesheets:
-  style:
+  app:
   <% self.css_assets.each do |lib| -%>
   - <%=File.join(self.css_path, lib) %>
   <% end -%>

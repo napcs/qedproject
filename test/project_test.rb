@@ -14,6 +14,14 @@ class ProjectTest < ProjectTestCase
     assert File.exist?(File.join(@folder, "public"))
   end
   
+  def test_creates_public_folder_with_specified_name
+    p = QEDProject::Project.new(@folder, :public_dir => "site")
+    p.generate
+    assert !File.exist?(File.join(@folder, "public"))
+    
+    assert File.exist?(File.join(@folder, "site"))
+  end
+  
   def test_creates_images_folder
     p = QEDProject::Project.new(@folder)
     p.generate
@@ -41,6 +49,12 @@ class ProjectTest < ProjectTestCase
     p = QEDProject::Project.new(@folder)
     p.generate
     assert File.exist?(File.join(@folder, "public", "index.html"))
+  end
+  
+  def test_skips_adding_index_page_if_skipped
+    p = QEDProject::Project.new(@folder, :skip_index => true)
+    p.generate
+    assert !File.exist?(File.join(@folder, "public", "index.html"))
   end
   
   def test_adds_rakefile

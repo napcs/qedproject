@@ -28,6 +28,9 @@ module QEDProject
           end
         end 
         
+        # DSL again, this lets you specify dependencies. 
+        # Creates a dependencies class instance method
+        # we can use later.
         def depends_on(libraries)
           m = class << self; self; end
           m.send :define_method, :dependencies do
@@ -35,6 +38,8 @@ module QEDProject
           end
         end
         
+        # for the DSL, creates both an instance
+        # method and a class instance method
         def set_js_files(files)
           # define class method
           m = class << self; self; end

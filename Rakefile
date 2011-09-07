@@ -107,19 +107,6 @@ task :fetch_jqm do
 
 end
 
-task :fetch_jqueryui do
-  jqui = "vendor/jqueryui"
-  FileUtils.mkdir_p jqui
-  Dir.chdir jqui do
-    `wget http://jqueryui.com/download/jquery-ui-1.8.16.custom.zip`
-    `wget http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css`
-    `unzip -j jquery-ui-1.8.16.custom.zip`
-    `echo 1.8.16 >> VERSION`
-  end
-
-end
-
-
 task :fetch_backbone do
   FileUtils.rm_rf("vendor/backbone")
   FileUtils.mkdir_p("vendor/backbone")
