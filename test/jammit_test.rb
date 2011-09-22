@@ -122,4 +122,33 @@ class JammitTest < ProjectTestCase
       assert source.include?("javascripts/jquery-1.6.2.min.js")
     end
     
+    def test_adds_app_js_to_javascripts_folder_in_asset_file_when_no_coffeescript
+      p = QEDProject::Project.new(@folder, :jammit => true)
+      p.generate
+      source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
+      assert source.include?("javascripts/app.js")
+    end
+    
+    def test_adds_app_css_to_stylesheets_folder_in_asset_file_when_no_sass
+      p = QEDProject::Project.new(@folder, :jammit => true)
+      p.generate
+      source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
+      assert source.include?("stylesheets/app.css")
+    end
+    
+    def test_adds_app_js_to_tmp_folder_in_asset_file_when_coffeescript
+      p = QEDProject::Project.new(@folder, :jammit => true, :coffeescript => true)
+      p.generate
+      source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
+      assert source.include?("tmp/app.js")
+    end
+    
+    def test_adds_app_css_to_tmp_folder_in_asset_file_when_sass
+      p = QEDProject::Project.new(@folder, :jammit => true, :sass => true)
+      p.generate
+      source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
+      assert source.include?("tmp/app.css")
+    end
+    
+    
 end

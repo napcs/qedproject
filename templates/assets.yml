@@ -3,9 +3,19 @@ stylesheets:
   <% self.css_assets.each do |lib| -%>
   - <%=File.join(self.css_path, lib) %>
   <% end -%>
+<% if self.sass -%>
+  - <%= File.join("tmp", "app.css") %>
+<% else -%>
+  - <%= File.join(self.css_path, "app.css") %>
+<% end -%>
   
 javascripts:
   app:
   <% self.js_assets.each do |lib| -%>
   - <%=File.join(self.js_path, lib) %>
   <% end -%>
+<% if self.coffeescript -%>
+  - <%= File.join("tmp", "app.js") %>
+<% else -%>
+  - <%= File.join(self.js_path, "app.js") %>
+<% end -%>

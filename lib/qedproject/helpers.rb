@@ -20,6 +20,11 @@ module QEDProject
       puts "Created folder #{destination}" if verbose
     end
     
+    def create_file(destination, options = {})
+      FileUtils.touch destination
+      puts "Created file #{destination}" if verbose
+    end
+    
     
     # Reads a template from the file system,
     # evaluates it with ERB

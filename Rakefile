@@ -90,8 +90,8 @@ task :fetch_jquery do
   FileUtils.rm_rf("vendor/jquery")
   FileUtils.mkdir("vendor/jquery")
   Dir.chdir("vendor/jquery") do
-    `wget http://code.jquery.com/jquery-1.6.2.min.js`
-    `echo 1.6.2 >> VERSION`
+    `wget http://code.jquery.com/jquery-1.6.4.min.js`
+    `echo 1.6.4 >> VERSION`
   end
 end
 
@@ -100,9 +100,9 @@ task :fetch_jqm do
   jqm = "vendor/jquerymobile"
   FileUtils.mkdir_p jqm
   Dir.chdir jqm do
-    `wget http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.zip`
-    `unzip -j jquery.mobile-1.0b2.zip`
-    `echo 1.0b2 >> VERSION`
+    `wget http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.zip`
+    `unzip -j jquery.mobile-1.0b3.zip`
+    `echo 1.0b3 >> VERSION`
   end
 
 end

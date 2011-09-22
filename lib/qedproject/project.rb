@@ -153,8 +153,18 @@ module QEDProject
       mkdir_p( File.join(self.path, self.js_path), :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.css_path), :verbose => self.verbose)
       mkdir_p( File.join(self.path, "config"), :verbose => self.verbose) if self.needs_config_folder?
-      mkdir_p( File.join(self.path, "coffeescripts"), :verbose => self.verbose) if self.coffeescript
-      mkdir_p( File.join(self.path, "sass"), :verbose => self.verbose) if self.sass
+      if self.coffeescript
+        mkdir_p( File.join(self.path, "coffeescripts"), :verbose => self.verbose) 
+        create_file(File.join(self.path, "coffeescripts", "app.coffee"), :verbose => self.verbose) 
+      else
+        create_file(File.join(self.path, self.js_path, "app.js" ), :verbose => self.verbose)
+      end
+      if self.sass
+        mkdir_p( File.join(self.path, "sass"), :verbose => self.verbose) 
+        create_file( File.join(self.path, "sass", "app.sass"), :verbose => self.verbose)
+      else
+        create_file(File.join(self.path, self.css_path, "app.css" ), :verbose => self.verbose)
+      end
     end
 
     # Loop through the libraries the user added

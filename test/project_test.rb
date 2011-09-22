@@ -51,6 +51,34 @@ class ProjectTest < ProjectTestCase
     assert File.exist?(File.join(@folder, "public", "index.html"))
   end
   
+  def test_adds_js_file
+    p = QEDProject::Project.new(@folder)
+    p.generate
+    assert File.exist?(File.join(@folder, "public","javascripts", "app.js"))
+  end
+  
+  def test_adds_css_file
+    p = QEDProject::Project.new(@folder)
+    p.generate
+    assert File.exist?(File.join(@folder, "public","stylesheets", "app.css"))
+  end
+  
+  def test_adds_js_file_to_index
+    p = QEDProject::Project.new(@folder)
+    p.generate
+    source = Pathname.new(File.join(@folder, "public", "index.html")).read
+    assert source.include?("src=\"javascripts/app.js\"")
+  end
+  
+  def test_adds_css_file_to_index
+    p = QEDProject::Project.new(@folder)
+    p.generate
+    source = Pathname.new(File.join(@folder, "public", "index.html")).read
+    assert source.include?("href=\"stylesheets/app.css\"")
+  end
+  
+  
+  
   def test_skips_adding_index_page_if_skipped
     p = QEDProject::Project.new(@folder, :skip_index => true)
     p.generate
