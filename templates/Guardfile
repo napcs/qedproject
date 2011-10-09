@@ -1,8 +1,14 @@
 <% if self.sass -%>
+<% if self.compass -%>
+guard "compass" do
+  watch(/^sass\/(.*)\.s[ac]ss/)
+end
+<% else -%>
 <% if self.jammit -%>
 guard "sass", :input => "sass", :output => "tmp"
 <% else -%>
 guard "sass", :input => "sass", :output => "public/stylesheets"
+<% end -%>
 <% end -%>
 <% end -%>
 <% if self.coffeescript -%>
