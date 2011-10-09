@@ -9,7 +9,8 @@ module QEDProject
     attr_accessor :path, :libs, :coffeescript, :sass, :jammit, :public_dir, :no_overwrite,
                   :js_path, :css_path, :images_path, :verbose, :testing, :skip_index,
                   :sorted_libs,
-                  :css_assets, :js_assets
+                  :css_assets, :js_assets,
+                  :compass
     # convenience method to create a new project.
     # Simply call create with the project path and the options.
     def self.create(project_path, options= {})
@@ -76,12 +77,14 @@ module QEDProject
       collect_libraries
       self.public_dir = options[:public_dir] || "public"
       self.jammit = options[:jammit]
-      self.sass = options[:sass]
       self.coffeescript = options[:coffeescript]
       self.verbose = options[:verbose]
       self.testing = options[:testing]
       self.skip_index = options[:skip_index]
       self.no_overwrite = options[:no_overwrite] ? true : false
+      self.sass = options[:sass]
+      self.compass = options[:compass]
+      self.sass = true if self.compass # force sass if they wanted compass
     end
 
     # Set up the basic paths we'll use throughout
@@ -98,7 +101,7 @@ module QEDProject
     
     # Only jammit needs a config folder for now.
     def needs_config_folder?
-      self.jammit
+      self.jammit || self.compass
     end
 
     # Start the project generation.
@@ -115,6 +118,7 @@ module QEDProject
       self.add_testing if self.testing
       self.create_guardfile if self.needs_guardfile?
       self.create_rakefile
+      self.create_compass_config if self.compass
     end
 
     # includes the Jasmine BDD framework for javascript testing
@@ -185,6 +189,10 @@ module QEDProject
 
     def create_guardfile
       render_template "Guardfile", File.join(self.path, "Guardfile")
+    end
+    
+    def create_compass_config
+      render_template "compass.rb", File.join(self.path, "config", "compass.rb")
     end
     
     def create_index

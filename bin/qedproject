@@ -45,6 +45,10 @@ OptionParser.new do |opts|
   opts.on('--skip-index', 'Skip creating a default index.html file') do
     options[:skip_index] = true
   end
+  
+  opts.on('--compass', 'Use Compass framework (forces Sass)') do
+    options[:compass] = true
+  end
 
 
 end.parse!

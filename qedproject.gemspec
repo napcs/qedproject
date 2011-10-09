@@ -64,7 +64,8 @@ Gem::Specification.new do |s|
     "templates/sampleSpec.js",
     "templates/suite.html",
     "templates/index.html",
-    "templates/Rakefile"
+    "templates/Rakefile",
+    "templates/compass.rb"
     
   
   ]
@@ -74,6 +75,8 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   s.add_runtime_dependency "coffee-script", ">=2.2.0"
   s.add_runtime_dependency "sass", ">=3.1.8"
+  s.add_runtime_dependency "compass", ">=0.11.5"
+  s.add_runtime_dependency "guard-compass", ">=0.0.6"
   s.add_runtime_dependency "jammit", ">=0.6.3"
   s.add_runtime_dependency "rake", ">=0.8.7"
   s.add_runtime_dependency "guard", ">=0.8.0"
