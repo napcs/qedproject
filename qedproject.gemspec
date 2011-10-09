@@ -72,6 +72,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
+  s.add_runtime_dependency "net-ssh"
+  s.add_runtime_dependency "net-sftp"
+  s.add_runtime_dependency "net-scp"
   s.add_runtime_dependency "coffee-script", ">=2.2.0"
   s.add_runtime_dependency "sass", ">=3.1.8"
   s.add_runtime_dependency "jammit", ">=0.6.3"

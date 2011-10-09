@@ -2,7 +2,11 @@ SERVER = "yourhost.com"
 USERNAME = "yourusername"
 REMOTE_FOLDER = "/home/#{USERNAME}/yourhost.com"
 
+PORT = 22
+
 require 'net/scp'
+require 'net/sftp'
+require 'net/ssh'
 
 <% if self.needs_guardfile? -%>
 desc "compile CSS, js files"
@@ -19,7 +23,9 @@ task :deploy => :compile do
 <% else -%>
 task :deploy do
 <% end -%>
-  Net::SCP.start(SERVER, USERNAME, {:port => PORT} ) do |scp|
-    scp.upload! "public", REMOTE_FOLDER, :recursive => true
+  Net::SSH.start(SERVER, USERNAME, {:port => PORT} ) do |ssh|
+    ssh.sftp.rmdir File.join(REMOTE_FOLDER, "public")
+    ssh.scp.upload! "public", REMOTE_FOLDER, :recursive => true
   end
 end
+
