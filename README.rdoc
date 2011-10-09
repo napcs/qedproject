@@ -113,6 +113,9 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2011-10-09 - 0.1.1
+  * Changed deployment script template to remove original directory by default
+  
 2011-10-08 - 0.1.0
   * jQuery Mobile 1.0RC1
   * Added -o, --overwrite option, so existing files won't be blown away.
