@@ -7,7 +7,7 @@ banner = "QEDProject #{QEDProject::VERSION} (C) 2011 Brian P. Hogan\n"
 banner << "-" * banner.length
 puts banner
 
-options = {}
+options = {:verbose => true, :no_overwrite => true}
 LIBRARIES = QEDProject::Libraries::Base.libs.keys
 OptionParser.new do |opts|
   opts.banner = "Usage: qedproject <projectname> [options]"
@@ -36,6 +36,10 @@ OptionParser.new do |opts|
   
   opts.on("-l", "--libs [LIBRARIES]", "comma-separated list of libraries to include") do |libs|
     options[:libs] = libs.split(",").collect{ |f| f.to_sym }
+  end
+  
+  opts.on('-o', '--overwrite', "Overwrite existing files with same names") do
+    options[:no_overwrite] = false
   end
   
   opts.on('--skip-index', 'Skip creating a default index.html file') do

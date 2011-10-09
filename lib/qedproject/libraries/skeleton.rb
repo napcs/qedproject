@@ -13,9 +13,10 @@ module QEDProject
 
       def generate!
         super
+        return true if self.project.skip_index
         index_file = File.join(self.project.path, self.project.public_dir, "index.html")
         FileUtils.rm_rf index_file if File.exist?(index_file)
-        render_template_to_file "index.html", index_file, binding
+        render_template "index.html", index_file
       end
 
     end

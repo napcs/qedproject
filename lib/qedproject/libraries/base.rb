@@ -117,6 +117,16 @@ module QEDProject
          cp_r File.join(self.lib_root, lib), File.join(self.project.path, self.project.js_path), :verbose => self.project.verbose
         end
       end
+      
+      def render_template(source, dest)
+        if self.project.no_overwrite && File.exist?(dest)
+          puts "Skipping #{dest}" if self.project.verbose
+        else
+          render_template_to_file source, dest, binding
+          puts "Created #{dest}" if self.project.verbose
+        end
+      end
+      
 
     end
   end

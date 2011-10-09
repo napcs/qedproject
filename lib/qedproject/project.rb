@@ -6,7 +6,7 @@ module QEDProject
     
     include QEDProject::Helpers
     
-    attr_accessor :path, :libs, :coffeescript, :sass, :jammit, :public_dir,
+    attr_accessor :path, :libs, :coffeescript, :sass, :jammit, :public_dir, :no_overwrite,
                   :js_path, :css_path, :images_path, :verbose, :testing, :skip_index,
                   :sorted_libs,
                   :css_assets, :js_assets
@@ -81,6 +81,7 @@ module QEDProject
       self.verbose = options[:verbose]
       self.testing = options[:testing]
       self.skip_index = options[:skip_index]
+      self.no_overwrite = options[:no_overwrite] ? true : false
     end
 
     # Set up the basic paths we'll use throughout
@@ -155,15 +156,15 @@ module QEDProject
       mkdir_p( File.join(self.path, "config"), :verbose => self.verbose) if self.needs_config_folder?
       if self.coffeescript
         mkdir_p( File.join(self.path, "coffeescripts"), :verbose => self.verbose) 
-        create_file(File.join(self.path, "coffeescripts", "app.coffee"), :verbose => self.verbose) 
+        create_file(File.join(self.path, "coffeescripts", "app.coffee"), :verbose => self.verbose, :no_overwrite => self.no_overwrite) 
       else
-        create_file(File.join(self.path, self.js_path, "app.js" ), :verbose => self.verbose)
+        create_file(File.join(self.path, self.js_path, "app.js" ), :verbose => self.verbose, :no_overwrite => self.no_overwrite)
       end
       if self.sass
         mkdir_p( File.join(self.path, "sass"), :verbose => self.verbose) 
-        create_file( File.join(self.path, "sass", "app.sass"), :verbose => self.verbose)
+        create_file( File.join(self.path, "sass", "app.sass"), :verbose => self.verbose, :no_overwrite => self.no_overwrite)
       else
-        create_file(File.join(self.path, self.css_path, "app.css" ), :verbose => self.verbose)
+        create_file(File.join(self.path, self.css_path, "app.css" ), :verbose => self.verbose, :no_overwrite => self.no_overwrite)
       end
     end
 
@@ -179,24 +180,31 @@ module QEDProject
     end
 
     def create_asset_file
-      render_template_to_file("assets.yml", File.join(self.path, "config", "assets.yml"), binding)
-      puts "Created #{File.join(self.path, 'config', 'assets.yml')}" if self.verbose
+      render_template("assets.yml", File.join(self.path, "config", "assets.yml"))
     end
 
     def create_guardfile
-      render_template_to_file "Guardfile", File.join(self.path, "Guardfile"), binding
-      puts "Created #{ File.join(self.path, "Guardfile")}" if self.verbose
+      render_template "Guardfile", File.join(self.path, "Guardfile")
     end
     
     def create_index
       @project = self
-      render_template_to_file "index.html", File.join(self.path, self.public_dir, "index.html"), binding
-      puts "Created #{ File.join(self.path, self.public_dir, "index.html")}" if self.verbose
+      render_template "index.html", File.join(self.path, self.public_dir, "index.html") unless self.skip_index
     end
         
     def create_rakefile
-      render_template_to_file "Rakefile", File.join(self.path, "Rakefile"), binding
-      puts "Created #{ File.join(self.path, "Rakefile")}" if self.verbose
+        render_template "Rakefile", File.join(self.path, "Rakefile")
     end
+      
+    def render_template(source, dest)
+      if self.no_overwrite && File.exist?(dest)
+        puts "Skipping #{dest}" if self.verbose
+      else
+        render_template_to_file source, dest, binding
+        puts "Created #{dest}" if self.verbose
+      end
+    end
+      
+      
   end
 end

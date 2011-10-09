@@ -37,7 +37,7 @@ class ProjectTest < ProjectTestCase
   def test_should_add_jquery_when_specified
     p = QEDProject::Project.new(@folder, :libs => [:jquery])
     p.generate
-    assert File.exist?(File.join(@folder, "public", "javascripts","jquery-1.6.2.min.js"))
+    assert File.exist?(File.join(@folder, "public", "javascripts","jquery-1.6.4.min.js"))
   end
       
   def test_gets_array_of_js_files_for_libs
@@ -51,8 +51,21 @@ class ProjectTest < ProjectTestCase
     assert File.exist?(File.join(@folder, "public", "index.html"))
   end
   
+  def test_keeps_original_index_page_if_one_exists
+    FileUtils.mkdir_p(File.join(@folder, "public"))
+    File.open(File.join(@folder, "public", "index.html"), "w") do |f|
+      f << "Hello world from my test"
+    end
+    
+    p = QEDProject::Project.new(@folder, :no_overwrite => true)
+    p.generate
+    assert File.exist?(File.join(@folder, "public", "index.html"))
+    source = Pathname.new(File.join(@folder, "public", "index.html")).read
+    assert source.include?("Hello world from my test")
+  end
+  
   def test_adds_js_file
-    p = QEDProject::Project.new(@folder)
+    p = QEDProject::Project.new(@folder)  
     p.generate
     assert File.exist?(File.join(@folder, "public","javascripts", "app.js"))
   end
@@ -99,13 +112,13 @@ class ProjectTest < ProjectTestCase
 
   def test_js_assets_has_jquery_first
     p = QEDProject::Project.new(@folder, :libs => [:jquerytmpl], :jammit => true)
-    assert p.js_assets[0].include?("jquery-1.6.2.min.js")
+    assert p.js_assets[0].include?("jquery-1.6.4.min.js")
     assert p.js_assets[1].include?("jquery.tmpl.min.js")
   end
   
   def test_js_assets_has_jquery_first_and_only_includes_it_once_when_explicitly_requested_second
     p = QEDProject::Project.new(@folder, :libs => [:jquerytmpl, :jquery], :jammit => true)
-    assert p.js_assets[0].include?("jquery-1.6.2.min.js")
+    assert p.js_assets[0].include?("jquery-1.6.4.min.js")
     assert p.js_assets[1].include?("jquery.tmpl.min.js")
     assert_nil p.js_assets[2]
     
@@ -113,7 +126,7 @@ class ProjectTest < ProjectTestCase
   
   def test_js_assets_has_jquery_first_and_only_includes_it_once_when_explicitly_requested_first
     p = QEDProject::Project.new(@folder, :libs => [:jquery, :jquerytmpl], :jammit => true)
-    assert p.js_assets[0].include?("jquery-1.6.2.min.js")
+    assert p.js_assets[0].include?("jquery-1.6.4.min.js")
     assert p.js_assets[1].include?("jquery.tmpl.min.js")
     assert_nil p.js_assets[2]
   end

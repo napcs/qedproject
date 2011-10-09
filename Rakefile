@@ -98,11 +98,12 @@ end
 
 task :fetch_jqm do
   jqm = "vendor/jquerymobile"
+  FileUtils.rm_rf jqm
   FileUtils.mkdir_p jqm
   Dir.chdir jqm do
-    `wget http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.zip`
-    `unzip -j jquery.mobile-1.0b3.zip`
-    `echo 1.0b3 >> VERSION`
+    `wget http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.zip`
+    `unzip -j jquery.mobile-1.0rc1.zip`
+    `echo 1.0rc1 >> VERSION`
   end
 
 end

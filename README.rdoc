@@ -45,7 +45,7 @@ but also with Sass, CoffeeScript, and asset packaging.
     qedproject myproject -l jquery,backbone -c -s -a
     
 
-= Testing with Jasmine
+== Testing with Jasmine
 
 If you'd like to create projects where you can do Jasmine testing, use the <tt>-t</tt> flag.
 
@@ -56,6 +56,10 @@ a sample spec. If you asked for CoffeeScript, the sample spec will be
 written in CoffeeSript and the Guardfile will be modified to convert specs to
 js files.
 
+
+== Overwriting files
+
+By default, the CLI tool will not overwrite files with the same name. If you want to replace files, pass the <tt>-o</tt> flag.
 
 = Building Plugins
 Plugins should be gems that start with the prefix <tt>qedproject-</tt>.
@@ -109,6 +113,10 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2011-10-08 - 0.1.0
+  * jQuery Mobile 1.0RC1
+  * Added -o, --overwrite option, so existing files won't be blown away.
+  
 2011-09-21 - 0.0.9
   * jQuery 1.6.4
   * Added HTMLShiv to index template

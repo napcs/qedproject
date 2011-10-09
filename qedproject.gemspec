@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
     "vendor/backbone/json2.js",
     "vendor/backbone/underscore-min.js",
     "vendor/jquery/VERSION",
-    "vendor/jquery/jquery-1.6.4.js",
+    "vendor/jquery/jquery-1.6.4.min.js",
     "vendor/jquerytmpl/VERSION",
     "vendor/jquerytmpl/jquery.tmpl.min.js",
     "vendor/knockout/VERSION",
@@ -50,14 +50,13 @@ Gem::Specification.new do |s|
     "vendor/jasmine/lib/jasmine-1.0.2/jasmine-html.js",
     "vendor/jasmine/lib/jasmine-1.0.2/jasmine.css",
     "vendor/jasmine/lib/jasmine-1.0.2/jasmine.js",
-    "vendor/jquerymobile/jquery.mobile-1.0b3.css",
-    "vendor/jquerymobile/jquery.mobile-1.0b3.js",
+    "vendor/jquerymobile/jquery.mobile-1.0rc1.css",
+    "vendor/jquerymobile/jquery.mobile-1.0rc1.js",
     "vendor/jquerymobile/ajax-loader.png",
     "vendor/jquerymobile/icons-18-black.png",
     "vendor/jquerymobile/icons-18-white.png",
     "vendor/jquerymobile/icons-36-black.png",
     "vendor/jquerymobile/icons-36-white.png",
-    "vendor/jquerymobile/icon-search-black.png",
     "vendor/jquerymobile/templates/index.html",
     "templates/assets.yml",
     "templates/Guardfile",
@@ -73,13 +72,13 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  s.add_runtime_dependency "coffee-script"
-  s.add_runtime_dependency "sass"
-  s.add_runtime_dependency "jammit"
-  s.add_runtime_dependency "rake"
-  s.add_runtime_dependency "guard"
-  s.add_runtime_dependency "guard-jammit"
-  s.add_runtime_dependency "guard-coffeescript"
-  s.add_runtime_dependency "guard-sass"
+  s.add_runtime_dependency "coffee-script", ">=2.2.0"
+  s.add_runtime_dependency "sass", ">=3.1.8"
+  s.add_runtime_dependency "jammit", ">=0.6.3"
+  s.add_runtime_dependency "rake", ">=0.8.7"
+  s.add_runtime_dependency "guard", ">=0.8.0"
+  s.add_runtime_dependency "guard-jammit", ">=0.2.0"
+  s.add_runtime_dependency "guard-coffeescript", ">=0.5.2"
+  s.add_runtime_dependency "guard-sass", ">=0.5.0"
   # s.add_runtime_dependency "rest-client"
 end
