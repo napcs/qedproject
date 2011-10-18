@@ -5,6 +5,22 @@ QEDProject creates a simple web project skeleton with support for Sass and Coffe
 as well as asset packaging. It's a tool I wrote to make things easier for me, and
 if you like it, I'd love to hear how you're using it.
 
+== Installation
+
+QEDProject is distributed as a Ruby gem. That means you'll need the Ruby programming language installed on your machine along with the RubyGems package manager.
+
+Then, simply
+
+    gem install qedproject
+
+to get the latest version and all its dependencies.
+
+If you're on Windows, you'll need to install RubyInstaller and the Devkit. See http://rubyinstaller.org/add-ons/devkit/ for more.
+
+If you're on OSX, you need to have XCode installed.
+
+If you're on Ubuntu and you want to use CoffeeScript, you'll need to install NodeJS.
+
 == Usage
 
 Generate a simple web project
