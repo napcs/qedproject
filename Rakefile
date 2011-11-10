@@ -63,8 +63,20 @@ task :fetch_js do
   Rake::Task[:fetch_skeleton].invoke
   Rake::Task[:fetch_jqm].invoke
   Rake::Task[:fetch_jqueryui].invoke
+  Rake::Task[:fetch_mustache].invoke
   
 
+end
+
+
+
+task :fetch_mustache do
+  FileUtils.rm_rf("vendor/mustache")
+  FileUtils.mkdir("vendor/mustache")
+  Dir.chdir("vendor/mustache") do
+    `wget --no-check-certificate https://raw.github.com/janl/mustache.js/0.3.0/mustache.js`
+    `echo 0.3.0 >> VERSION`
+  end
 end
 
 task :fetch_knockout do
@@ -90,8 +102,8 @@ task :fetch_jquery do
   FileUtils.rm_rf("vendor/jquery")
   FileUtils.mkdir("vendor/jquery")
   Dir.chdir("vendor/jquery") do
-    `wget http://code.jquery.com/jquery-1.6.4.min.js`
-    `echo 1.6.4 >> VERSION`
+    `wget http://code.jquery.com/jquery.min.js -O jquery-1.7.0.min.js`
+    `echo 1.7.0 >> VERSION`
   end
 end
 
@@ -101,9 +113,9 @@ task :fetch_jqm do
   FileUtils.rm_rf jqm
   FileUtils.mkdir_p jqm
   Dir.chdir jqm do
-    `wget http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.zip`
-    `unzip -j jquery.mobile-1.0rc1.zip`
-    `echo 1.0rc1 >> VERSION`
+    `wget http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.zip`
+    `unzip -j jquery.mobile-1.0rc2.zip`
+    `echo 1.0rc2 >> VERSION`
   end
 
 end

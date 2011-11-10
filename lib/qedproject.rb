@@ -7,6 +7,8 @@ require "qedproject/libraries/knockout"
 require "qedproject/libraries/jquerytmpl"
 require "qedproject/libraries/jquerymobile"
 require "qedproject/libraries/skeleton"
+require "qedproject/libraries/mustache"
+
 require "qedproject/project"
 require "qedproject/plugins"
 

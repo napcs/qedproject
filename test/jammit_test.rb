@@ -119,7 +119,7 @@ class JammitTest < ProjectTestCase
       p = QEDProject::Project.new(@folder, :jammit => true, :libs => [:jquery])
       p.generate
       source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
-      assert source.include?("javascripts/jquery-1.6.4.min.js")
+      assert source.include?("javascripts/jquery-1.7.0.min.js")
     end
     
     def test_adds_app_js_to_javascripts_folder_in_asset_file_when_no_coffeescript
