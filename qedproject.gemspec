@@ -59,6 +59,8 @@ Gem::Specification.new do |s|
     "vendor/jquerymobile/icons-36-black.png",
     "vendor/jquerymobile/icons-36-white.png",
     "vendor/jquerymobile/templates/index.html",
+    "vendor/mustache/mustache.js",
+    "vendor/mustache/VERSION",
     "templates/assets.yml",
     "templates/Guardfile",
     "templates/sampleSpec.coffee",

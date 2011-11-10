@@ -2,6 +2,7 @@ module QEDProject
   module Libraries
     class Skeleton < QEDProject::Libraries::Base
       library :skeleton
+      depends_on [:jquery]
       set_js_files ["tabs.js"]
       set_css_files ["base.css", "skeleton.css", "layout.css" ] 
       set_image_files [
