@@ -128,6 +128,8 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2011-12-13 - 0.2.1
+  * Added Ember.js
 2011-11-10 - 0.2.0
   * jQuery 1.7
   * jQuery Mobile 1.0rc2

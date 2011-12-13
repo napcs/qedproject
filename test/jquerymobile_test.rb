@@ -40,6 +40,13 @@ class JquerymobileTest < ProjectTestCase
     end
   end
   
+  def test_uses_jquerymobile_template
+    p = QEDProject::Project.new(@folder, :libs => [:jquerymobile])
+    p.generate
+    source = Pathname.new(File.join(@folder, "public", "index-mobile.html")).read
+      assert source.include?('<div data-role="page" id="main">')
+  end
+  
   def test_loads_jquery_into_asset_file_when_jammit_specified
     p = QEDProject::Project.new(@folder, :libs => [:jquerymobile], :jammit => true)
     p.generate

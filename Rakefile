@@ -3,13 +3,13 @@ require 'rake/testtask'
 require 'rake/rdoctask' 
 require 'lib/qedproject/version'
 
-require 'rcov/rcovtask'
+# require 'rcov/rcovtask'
 
-Rcov::RcovTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList['test/*_test.rb']
-  t.verbose = true
-end
+# Rcov::RcovTask.new do |t|
+#   t.libs << "test"
+#   t.test_files = FileList['test/*_test.rb']
+#   t.verbose = true
+# end
 
 gemspec = Dir.glob("*.gemspec").first
 gemname = gemspec.gsub(".gemspec", "")
@@ -32,6 +32,19 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
+task :fetch_ember do
+  
+  dir = "vendor/ember"
+  FileUtils.rm_rf dir
+  FileUtils.mkdir_p File.join dir, "templates"
+  FileUtils.cp "vendor/templates/ember_index.html", File.join(dir, "templates", "index.html")
+  Dir.chdir dir do
+    `wget --no-check-certificate https://github.com/downloads/emberjs/starter-kit/starter-kit.0.9.zip -O ember.zip`
+    `unzip -j ember.zip`
+    `echo 0.9 >> VERSION`
+  end
+end
+
 task :fetch_skeleton do
   skeleton = "vendor/skeleton"
   FileUtils.mkdir_p skeleton
@@ -39,10 +52,9 @@ task :fetch_skeleton do
     `wget --no-check-certificate https://github.com/dhgamache/Skeleton/zipball/master -O skeleton.zip`
     `unzip -j skeleton.zip`
     `echo 1.1.0 >> VERSION`
-    f = File.read("index.html")
   end
-
 end
+
 task :fetch_jasmine do
   jasmine = "vendor/jasmine"
   FileUtils.rm_rf jasmine

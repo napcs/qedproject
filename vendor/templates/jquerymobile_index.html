@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project</title>
+<% if @project.jammit -%>
+    <link rel="stylesheet" href="assets/app.css">
+<% else -%>
+<% @project.css_assets.each do |css| -%>
+  <link rel="stylesheet" href="stylesheets/<%=css %>">
+<% end -%>
+<% end -%>
+<% if @project.jammit -%>
+    <script src="assets/app.js"></script>
+<% else -%>
+<% @project.js_assets.each do |js| -%>
+    <script src="javascripts/<%=js %>"></script>
+<% end -%>
+<% end -%>
+  </head>
+  
+  <body>
+    <div data-role="page" id="main">
+    	<div data-role="header">
+    		<h1>Main</h1>
+    	</div><!-- /header -->
+    	<div data-role="content">	
+    	  <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+          deserunt mollit anim id est laborum.
+    	  </p>
+    	  <p><a href="#about" data-role="button">About Us</a></p>	
+    		<p><a href="#dialog"data-role="button" data-rel="dialog" data-transition="pop">Dialog</a></p>
+    	  
+    	</div>
+    	<div data-role="footer" data-theme="d">
+    		<h4>Footer</h4>
+    	</div><!-- /footer -->
+    	
+    </div>
+    
+    
+    <div data-role="page" id="about" data-theme="a">
+
+    	<div data-role="header">
+    		<h1>About Us</h1>
+    	</div><!-- /header -->
+    	<div data-role="content">	    	
+      	<p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+          deserunt mollit anim id est laborum.
+    	  </p>
+    	</div>
+    	<div data-role="footer" data-theme="d">
+    		<h4>Footer</h4>
+    	</div><!-- /footer -->
+    	
+    </div>
+    
+    <!-- Start of third page: #popup -->
+    <div data-role="page" id="dialog">
+
+    	<div data-role="header" data-theme="e">
+    		<h1>Dialog</h1>
+    	</div><!-- /header -->
+
+    	<div data-role="content" data-theme="d">	
+    		<h2>Dialog</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+          anim id est laborum.
+        </p>
+    		<p><a href="#main" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to "Main"</a></p>	
+    	</div><!-- /content -->
+
+    	<div data-role="footer">
+    		<h4>Page Footer</h4>
+    	</div><!-- /footer -->
+    </div><!-- /page popup -->
+
+    
+  </body>
+
+</html>
