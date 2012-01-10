@@ -69,7 +69,6 @@ end
 
 task :fetch_js do
   Rake::Task[:fetch_knockout].invoke
-  Rake::Task[:fetch_jquerytmpl].invoke
   Rake::Task[:fetch_backbone].invoke
   Rake::Task[:fetch_jquery].invoke
   Rake::Task[:fetch_skeleton].invoke
@@ -97,16 +96,6 @@ task :fetch_knockout do
   Dir.chdir("vendor/knockout") do
     `wget --no-check-certificate https://github.com/downloads/SteveSanderson/knockout/knockout-1.2.1.js`
     `echo 1.2.1 >> VERSION`
-  end
-end
-
-task :fetch_jquerytmpl do
-  tmpldir = "vendor/jquery.tmpl"
-  FileUtils.rm_rf tmpldir
-  FileUtils.mkdir tmpldir
-  Dir.chdir tmpldir do
-    `wget --no-check-certificate https://raw.github.com/jquery/jquery-tmpl/master/jquery.tmpl.min.js`
-    `echo 1.0.0pre >> VERSION`
   end
 end
 
