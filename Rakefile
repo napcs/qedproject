@@ -53,6 +53,8 @@ task :fetch_skeleton do
     `unzip -j skeleton.zip`
     `echo 1.1.0 >> VERSION`
   end
+  FileUtils.cp "vendor/templates/skeleton_index.html", File.join(dir, "templates", "index.html")
+  
 end
 
 task :fetch_jasmine do
@@ -110,14 +112,18 @@ end
 
 
 task :fetch_jqm do
-  jqm = "vendor/jquerymobile"
-  FileUtils.rm_rf jqm
-  FileUtils.mkdir_p jqm
-  Dir.chdir jqm do
-    `wget http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.zip`
-    `unzip -j jquery.mobile-1.0rc2.zip`
-    `echo 1.0rc2 >> VERSION`
+  src = "http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.zip"
+  dir = "vendor/jquerymobile"
+  FileUtils.rm_rf dir
+  FileUtils.mkdir_p dir
+  FileUtils.mkdir_p File.join(dir, "templates")
+  Dir.chdir dir do
+    `wget #{src} -O jqm.zip`
+    `unzip -j jqm.zip`
+    `echo 1.0 >> VERSION`
   end
+  FileUtils.cp "vendor/templates/jquerymobile_index.html", File.join(dir, "templates", "index.html")
+  
 
 end
 
