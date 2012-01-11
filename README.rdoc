@@ -5,6 +5,9 @@ QEDProject creates a simple web project skeleton with support for Sass and Coffe
 as well as asset packaging. It's a tool I wrote to make things easier for me, and
 if you like it, I'd love to hear how you're using it.
 
+
+
+
 == Installation
 
 QEDProject is distributed as a Ruby gem. That means you'll need the Ruby programming language installed on your machine along with the RubyGems package manager.
@@ -128,9 +131,9 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
-2011-12-13 - 0.2.1
+2012-1-10 - 0.2.1
   * Added Ember.js
-  * Updated jQuery Mobile
+  * Updated jQuery Mobile to 1.0
   * Removed jQuery Templates
   * Updated Jasmine suite.html template to include the JS you've used
   
