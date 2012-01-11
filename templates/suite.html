@@ -7,7 +7,14 @@
   <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
 
   <!-- include source files here... -->
-
+  <% if @project.jammit -%>
+  <script src="../public/assets/app.js"></script>
+  <% else -%>
+  <% @project.js_assets.each do |js| -%>
+  <script src="../public/javascripts/<%=js %>"></script>
+  <% end -%>
+  <script src="../public/javascripts/app.js"></script>
+  <% end -%>
   <!-- include spec files here... -->
   <script type="text/javascript" src="sampleSpec.js"></script>
 

@@ -43,7 +43,20 @@ class JasmineTest < ProjectTestCase
     assert source.include?('guard "coffeescript", :input => "spec", :output => "spec"')
   end
   
+  def test_adds_app_js_to_jasmine_suite_when_using_jammit
+    p = QEDProject::Project.new(@folder, :testing => true, :jammit => true, :libs => [:backbone])
+    p.generate
+    source = Pathname.new(File.join(@folder, "spec", "suite.html")).read
+    assert source.include?("src=\"../public/assets/app.js\"")
+  end
   
-  
+  def test_adds_libraries_to_the_jasmine_suite_when_not_using_jammit
+    p = QEDProject::Project.new(@folder, :testing => true, :libs => [:backbone])
+    p.generate
+    source = Pathname.new(File.join(@folder, "spec", "suite.html")).read
+    QEDProject::Libraries::Backbone.js_files.each do |js|
+      assert source.include?("src=\"../public/javascripts/#{js}\"")
+    end
+  end
   
 end
