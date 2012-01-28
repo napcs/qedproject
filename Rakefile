@@ -62,9 +62,9 @@ task :fetch_jasmine do
   FileUtils.rm_rf jasmine
   FileUtils.mkdir jasmine
   Dir.chdir jasmine do
-    `wget http://pivotal.github.com/jasmine/downloads/jasmine-standalone-1.0.2.zip`
-    `unzip jasmine-standalone-1.0.2.zip`
-    `echo 1.0.2 >> VERSION`
+    `wget http://pivotal.github.com/jasmine/downloads/jasmine-standalone-1.1.0.zip`
+    `unzip jasmine-standalone-1.1.0.zip`
+    `echo 1.1.0 >> VERSION`
   end
 
 end
