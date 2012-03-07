@@ -8,8 +8,7 @@ module QEDProject
     
     attr_accessor :path, :libs, :coffeescript, :sass, :jammit, :public_dir, :no_overwrite,
                   :js_path, :css_path, :images_path, :verbose, :testing, :skip_index,
-                  :sorted_libs,
-                  :css_assets, :js_assets
+                  :sorted_libs, :layouts, :css_assets, :js_assets
     # convenience method to create a new project.
     # Simply call create with the project path and the options.
     def self.create(project_path, options= {})
@@ -82,6 +81,7 @@ module QEDProject
       self.testing = options[:testing]
       self.skip_index = options[:skip_index]
       self.no_overwrite = options[:no_overwrite] ? true : false
+      self.layouts = options[:layouts]
     end
 
     # Set up the basic paths we'll use throughout
@@ -93,7 +93,7 @@ module QEDProject
 
     # We need a guardfile if the user is using jammit, sass, or coffeescript.
     def needs_guardfile?
-      self.jammit || self.sass || self.coffeescript
+      self.jammit || self.sass || self.coffeescript || self.layouts
     end
     
     # Only jammit needs a config folder for now.
@@ -142,6 +142,7 @@ module QEDProject
     #     stylesheets/      * only without assets
     #   config/
     #     assets.yml        * optional
+    #   views/              * optional
     #   coffeescripts/      * optional
     #   sass/               * optional
     #   spec/               * optional
@@ -154,6 +155,7 @@ module QEDProject
       mkdir_p( File.join(self.path, self.js_path), :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.css_path), :verbose => self.verbose)
       mkdir_p( File.join(self.path, "config"), :verbose => self.verbose) if self.needs_config_folder?
+      mkdir_p( File.join(self.path, "views"), :verbose => self.verbose) if self.layouts
       if self.coffeescript
         mkdir_p( File.join(self.path, "coffeescripts"), :verbose => self.verbose) 
         create_file(File.join(self.path, "coffeescripts", "app.coffee"), :verbose => self.verbose, :no_overwrite => self.no_overwrite) 
@@ -189,7 +191,8 @@ module QEDProject
     
     def create_index
       @project = self
-      render_template "index.html", File.join(self.path, self.public_dir, "index.html") unless self.skip_index
+      dest_file = self.layouts ? File.join(self.path, "layout.erb") : File.join(self.path, self.public_dir, "index.html")
+      render_template "index.html", dest_file unless self.skip_index
     end
         
     def create_rakefile
