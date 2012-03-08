@@ -1,3 +1,7 @@
+<% if self.layouts -%>
+require 'erubis'
+require 'guard/guard'
+<% end -%>
 <% if self.sass -%>
 <% if self.jammit -%>
 guard "sass", :input => "sass", :output => "tmp"
@@ -26,4 +30,52 @@ guard "jammit" do
   watch(/^tmp\/(.*)\.css/)
 <% end -%>
 end
+<% end -%>
+<% if self.layouts -%>
+module ::Guard
+  class Layouts < ::Guard::Guard
+    
+    def initialize(watchers = [], options = {})
+      super
+    end
+
+    def start
+      UI.info "Guard::Layouts is running"
+    end
+
+    def run_all
+      files = Dir.glob("views/**/*.*")
+      targets = Watcher.match_files(self, files)
+      run_on_change targets
+    end
+
+    def run_on_change(paths)
+      eruby = Erubis::Eruby.new(File.read("layout.erb"))
+      paths.collect! { |f| f.gsub "views/", "" }.reject! { |path| path.match(/^(.+\/)?(\..+\.\w+)/i) }
+      UI.info paths.inspect
+      paths.uniq.each do |path|
+        page_content = File.read("views/#{path}")
+        reg = /(.+\/).+\.\w+/i
+        target_path = path.match(reg)
+        unless target_path.nil? || File.directory?("public/#{target_path[1]}")
+          FileUtils.mkpath "public/#{target_path[1]}" 
+          UI.info "Created public/#{target_path[1]} directory"
+        end
+
+        new_file_name = path.gsub(".erb", "")
+        File.open("public/#{new_file_name}", "w") do |f|
+          f.write(eval eruby.src)
+        end
+        UI.info "Created public/#{new_file_name}"
+      end
+    end
+
+  end
+end
+
+guard :layouts do
+  watch(/^views\/(.*)\.erb/) { |m| "#{m[1]}.erb" }
+  watch(/layout\.erb/)       { |m| Dir.glob("views/**/*.html.erb") }
+end
+
 <% end -%>

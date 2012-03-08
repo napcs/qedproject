@@ -94,5 +94,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "guard-jammit", ">=0.2.0"
   s.add_runtime_dependency "guard-coffeescript", ">=0.5.2"
   s.add_runtime_dependency "guard-sass", ">=0.5.0"
+  s.add_runtime_dependency "erubis"
   # s.add_runtime_dependency "rest-client"
 end

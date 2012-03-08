@@ -32,6 +32,9 @@
   </head>
   <body>
     
+<% if @project.layouts %>
+    <%= "<%= page_content %\>" %>
+<% else %>
     <h1>My Project</h1>
     
     <p>
@@ -43,6 +46,7 @@
       pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
       culpa qui officia deserunt mollit anim id est laborum.
     </p>
+<% end %>
     
 <% if @project.jammit -%>
     <script src="assets/app.js"></script>

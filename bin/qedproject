@@ -46,6 +46,9 @@ OptionParser.new do |opts|
     options[:skip_index] = true
   end
 
+  opts.on('--layouts', 'Add layout support to the project') do
+    options[:layouts] = true
+  end
 
 end.parse!
 options[:verbose] = true 
