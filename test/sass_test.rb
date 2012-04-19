@@ -29,4 +29,10 @@ class SassTest < ProjectTestCase
     assert !File.exist?(File.join(@folder, "sass"))
   end
   
+  def test_should_create_gemfile_with_sass
+    p = QEDProject::Project.new(@folder, :sass => true)
+    p.generate
+    assert Pathname.new(File.join(@folder, "Gemfile")).read.include?("gem 'guard-sass'")
+  end
+  
 end

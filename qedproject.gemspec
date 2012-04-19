@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
     "vendor/jquery/VERSION",
     "vendor/jquery/jquery-1.7.0.min.js",
     "vendor/knockout/VERSION",
-    "vendor/knockout/knockout-1.2.1.js",
+    "vendor/knockout/knockout-2.0.0.js",
     "vendor/skeleton/VERSION",
     "vendor/skeleton/tabs.js",
     "vendor/skeleton/apple-touch-icon-114x114.png",
@@ -49,8 +49,8 @@ Gem::Specification.new do |s|
     "vendor/jasmine/lib/jasmine-1.1.0/jasmine-html.js",
     "vendor/jasmine/lib/jasmine-1.1.0/jasmine.css",
     "vendor/jasmine/lib/jasmine-1.1.0/jasmine.js",
-    "vendor/jquerymobile/jquery.mobile-1.0.css",
-    "vendor/jquerymobile/jquery.mobile-1.0.js",
+    "vendor/jquerymobile/jquery.mobile-1.1.0.css",
+    "vendor/jquerymobile/jquery.mobile-1.1.0.js",
     "vendor/jquerymobile/ajax-loader.png",
     "vendor/jquerymobile/icons-18-black.png",
     "vendor/jquerymobile/icons-18-white.png",
@@ -75,7 +75,8 @@ Gem::Specification.new do |s|
     "templates/sampleSpec.js",
     "templates/suite.html",
     "templates/index.html",
-    "templates/Rakefile"
+    "templates/Rakefile",
+    "templates/Gemfile"
     
   
   ]
@@ -88,11 +89,11 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "net-scp"
   s.add_runtime_dependency "coffee-script", ">=2.2.0"
   s.add_runtime_dependency "sass", ">=3.1.8"
-  s.add_runtime_dependency "jammit", ">=0.6.3"
+  s.add_runtime_dependency "jammit", ">=0.6.5"
   s.add_runtime_dependency "rake", ">=0.8.7"
   s.add_runtime_dependency "guard", ">=0.8.0"
-  s.add_runtime_dependency "guard-jammit", ">=0.2.0"
-  s.add_runtime_dependency "guard-coffeescript", ">=0.5.2"
-  s.add_runtime_dependency "guard-sass", ">=0.5.0"
+  s.add_runtime_dependency "guard-jammit", ">=0.3.0"
+  s.add_runtime_dependency "guard-coffeescript", ">=0.5.3"
+  s.add_runtime_dependency "guard-sass", ">=0.6.0"
   # s.add_runtime_dependency "rest-client"
 end

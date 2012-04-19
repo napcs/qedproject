@@ -115,6 +115,7 @@ module QEDProject
       self.add_testing if self.testing
       self.create_guardfile if self.needs_guardfile?
       self.create_rakefile
+      self.create_gemfile
     end
 
     # includes the Jasmine BDD framework for javascript testing
@@ -194,6 +195,10 @@ module QEDProject
         
     def create_rakefile
         render_template "Rakefile", File.join(self.path, "Rakefile")
+    end
+    
+    def create_gemfile
+      render_template "Gemfile", File.join(self.path, "Gemfile")
     end
       
     def render_template(source, dest)

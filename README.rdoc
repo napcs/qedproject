@@ -29,15 +29,25 @@ If you're on Ubuntu and you want to use CoffeeScript, you'll need to install Nod
 Generate a simple web project
 
     qedproject myproject
+    cd myproject
     
-Generate a simple web project with CoffeeScript and Sass support, using Guard 
-to monitor files for changes. Places outputs in public/javascripts and
-public/stylesheets by default.
+Then open the public/index.html file in your browser and get to work. Of course, this is only the tip of the iceberg.
+   
+### CoffeeScript and Sass support
+
+To generate a simple web project with CoffeeScript and Sass support, using Guard to monitor files for changes.
 
     qedproject myproject -c -s
+
+    Once the project is created, go into the project folder and run the Guard command. 
     
-While developing, use <tt>guard</tt> to update the files.
-    
+    cd myproject
+    guard 
+
+As you work on the Sass and CoffeeScript files, the corresponding CSS and JS files will be placed in public/javascripts and public/stylesheets respectively.   
+  
+### Asset Packaging with Jammit
+  
 Generate a project that minifies CSS and JS files using Jammit. 
 Creates the asset configuration file and a Guardfile.
 
@@ -48,7 +58,7 @@ using Guard.
 
     qedproject myproject -c -s -a
     
-== Including JavaScript libraries.
+### Including JavaScript libraries.
 
 Create a new project using jQuery
 
@@ -58,13 +68,13 @@ Create a new project using jQuery and Backbone
 
     qedproject myproject -l jquery,backbone
     
-Create a new project using jQuery, Backbone, jQery Templates, 
+Create a new project using jQuery and Backbone, 
 but also with Sass, CoffeeScript, and asset packaging.
 
     qedproject myproject -l jquery,backbone -c -s -a
     
 
-== Testing with Jasmine
+### Creating projects with Jasmine BDD tests
 
 If you'd like to create projects where you can do Jasmine testing, use the <tt>-t</tt> flag.
 
@@ -74,6 +84,17 @@ This will create a suite.html file in the spec folder, and will create
 a sample spec. If you asked for CoffeeScript, the sample spec will be 
 written in CoffeeSript and the Guardfile will be modified to convert specs to
 js files.
+
+### Using the Server and LiveReload
+
+You can make your browser refresh when you change your files. To do that, first open another window and type
+    
+    cd myproject
+    qedproject --server
+
+which starts up a web server on port 1337 that serves up your project's `public` folder. Then install one of the LiveReload plugins for your browser and connect your browser by visiting http://localhost:1337 and activating LiveReload.
+
+To get the browser plugins, visit http://help.livereload.com/kb/general-use/browser-extensions
 
 
 == Overwriting files
@@ -131,6 +152,14 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2012-4-19 - 0.3.0
+  * New projects get a Gemfile now to make it a little easier if you use Bundler
+  * The Jammit guard now forces rebuilding the assets - it was getting stuck on CoffeeScript files and this fixes it.
+  * JQuery Mobile 1.1
+  * Knockout 2.0.0
+  * Added a `--server` option which just starts up a simple web server pointing to the public/ folder of the current dir.
+  * Fixed a bug where Skeleton's default page wasn't loading the assets right without Jammit
+  
 2012-1-10 - 0.2.1
   * Added Ember.js
   * Updated jQuery Mobile to 1.0

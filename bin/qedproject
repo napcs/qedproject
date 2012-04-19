@@ -45,20 +45,31 @@ OptionParser.new do |opts|
   opts.on('--skip-index', 'Skip creating a default index.html file') do
     options[:skip_index] = true
   end
-
+  
+  opts.on('--server', 'start a webserver that serves public/') do
+    options[:server] = true
+  end
 
 end.parse!
-options[:verbose] = true 
-project = ARGV[0]
-
-if project.nil?
-  puts "Specify a project. Use qedproject -h for options."
+if options[:server]
+  require 'webrick'
+  s = WEBrick::HTTPServer.new(:Port => 1337, :DocumentRoot => File.join(Dir.pwd, "public"))
+  trap('INT') { s.shutdown }
+  s.start
 else
-  begin
-    QEDProject::Project.create(project, options)
-  rescue QEDProject::BadLibraryError => e
-    puts e.message
-    puts "QEDProject supports #{LIBRARIES.join(",")}"
-  end
-end
 
+  options[:verbose] = true 
+  project = ARGV[0]
+
+  if project.nil?
+    puts "Specify a project. Use qedproject -h for options."
+  else
+    begin
+      QEDProject::Project.create(project, options)
+    rescue QEDProject::BadLibraryError => e
+      puts e.message
+      puts "QEDProject supports #{LIBRARIES.join(",")}"
+    end
+  end
+
+end

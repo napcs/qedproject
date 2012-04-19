@@ -16,7 +16,7 @@ guard "coffeescript", :input => "spec", :output => "spec"
 <% end -%>
 <% end -%> 
 <% if self.jammit -%>
-guard "jammit" do
+guard "jammit", :force => true do
   watch(/^javascripts\/(.*)\.js/)
   watch(/^stylesheets\/(.*)\.css/)
 <% if self.coffeescript -%>
@@ -27,3 +27,13 @@ guard "jammit" do
 <% end -%>
 end
 <% end -%>
+
+guard 'livereload' do
+  watch(%r{public/.+\.(css|js|html)})
+<% if self.jammit -%>
+  watch(%r{public/assets/.+\.(css|js|html)})
+<% else %>
+  watch(%r{public/javascripts/.+\.js})
+  watch(%r{public/stylesheets/.+\.css})
+<% end -%>
+end

@@ -8,6 +8,12 @@ class ProjectTest < ProjectTestCase
     assert File.exist?(@folder)
   end
 
+  def test_creates_gemfile
+    p = QEDProject::Project.new(@folder)
+    p.generate
+    assert File.exist?(File.join(@folder, "Gemfile"))
+  end
+  
   def test_creates_public_folder
     p = QEDProject::Project.new(@folder)
     p.generate

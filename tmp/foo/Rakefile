@@ -1,0 +1,25 @@
+SERVER = "yourhost.com"
+USERNAME = "yourusername"
+REMOTE_FOLDER = "/home/#{USERNAME}/yourhost.com"
+
+PORT = 22
+
+require 'net/scp'
+require 'net/sftp'
+require 'net/ssh'
+
+desc "compile CSS, js files"
+task :compile do
+  require 'guard'
+  Guard.setup
+  Guard::Dsl.evaluate_guardfile
+  Guard::guards.each{|guard| guard.run_all}
+end
+desc "Deploy web site"
+task :deploy => :compile do
+  Net::SSH.start(SERVER, USERNAME, {:port => PORT} ) do |ssh|
+    ssh.sftp.rmdir File.join(REMOTE_FOLDER, "public")
+    ssh.scp.upload! "public", REMOTE_FOLDER, :recursive => true
+  end
+end
+

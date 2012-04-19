@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+gem 'guard'
+<% if self.sass -%>
+gem 'guard-sass'
+<% end -%>
+<% if self.coffeescript -%>
+gem 'guard-coffeescript'
+<% end -%>
+<% if self.jammit -%>
+gem 'guard-jammit'
+<% end -%>
+gem 'guard-livereload'

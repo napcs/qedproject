@@ -8,7 +8,7 @@ class JammitTest < ProjectTestCase
   def test_should_create_guardfile_with_jammit
     p = QEDProject::Project.new(@folder, :jammit => true)
     p.generate
-    assert Pathname.new(File.join(@folder, "Guardfile")).read.include?('guard "jammit" do')
+    assert Pathname.new(File.join(@folder, "Guardfile")).read.include?('guard "jammit"')
   end
   
   def test_uses_public_folder_for_js_when_no_jammit
@@ -148,6 +148,13 @@ class JammitTest < ProjectTestCase
       p.generate
       source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
       assert source.include?("tmp/app.css")
+    end
+    
+    
+    def test_should_create_gemfile_with_jammit
+      p = QEDProject::Project.new(@folder, :jammit => true)
+      p.generate
+      assert Pathname.new(File.join(@folder, "Gemfile")).read.include?("gem 'guard-jammit'")
     end
     
     

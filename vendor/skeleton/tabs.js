@@ -1,42 +1,29 @@
-/*
-* Skeleton V1.1
-* Copyright 2011, Dave Gamache
-* www.getskeleton.com
-* Free to use under the MIT license.
-* http://www.opensource.org/licenses/mit-license.php
-* 8/17/2011
-*/
 
+/**
+ * Skeleton V1.1
+ * Copyright 2011, Dave Gamache
+ * www.getskeleton.com
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 8/17/2011
+ */
 
-$(document).ready(function() {
+(function ($) {
+  // hash change handler
+  function hashchange () {
+    var hash = window.location.hash
+      , el = $('ul.tabs [href*="' + hash + '"]')
+      , content = $(hash)
 
-	/* Tabs Activiation
-	================================================== */
+    if (el.length && !el.hasClass('active') && content.length) {
+      el.closest('.tabs').find('.active').removeClass('active');
+      el.addClass('active');
+      content.show().addClass('active').siblings().hide().removeClass('active');
+    }
+  }
 
-	var tabs = $('ul.tabs');
-
-	tabs.each(function(i) {
-
-		//Get all tabs
-		var tab = $(this).find('> li > a');
-		tab.click(function(e) {
-
-			//Get Location of tab's content
-			var contentLocation = $(this).attr('href');
-
-			//Let go if not a hashed one
-			if(contentLocation.charAt(0)=="#") {
-
-				e.preventDefault();
-
-				//Make Tab Active
-				tab.removeClass('active');
-				$(this).addClass('active');
-
-				//Show Tab Content & add active class
-				$(contentLocation).show().addClass('active').siblings().hide().removeClass('active');
-
-			}
-		});
-	});
-});
+  // listen on event and fire right away
+  $(window).on('hashchange.skeleton', hashchange);
+  hashchange();
+  $(hashchange);
+})(jQuery);

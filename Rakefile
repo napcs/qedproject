@@ -53,7 +53,7 @@ task :fetch_skeleton do
     `unzip -j skeleton.zip`
     `echo 1.1.0 >> VERSION`
   end
-  FileUtils.cp "vendor/templates/skeleton_index.html", File.join(dir, "templates", "index.html")
+  FileUtils.cp "vendor/templates/skeleton_index.html", File.join(skeleton, "templates", "index.html")
   
 end
 
@@ -96,8 +96,8 @@ task :fetch_knockout do
   FileUtils.rm_rf("vendor/knockout")
   FileUtils.mkdir("vendor/knockout")
   Dir.chdir("vendor/knockout") do
-    `wget --no-check-certificate https://github.com/downloads/SteveSanderson/knockout/knockout-1.2.1.js`
-    `echo 1.2.1 >> VERSION`
+    `wget --no-check-certificate http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.js`
+    `echo 2.0.0 >> VERSION`
   end
 end
 
@@ -112,7 +112,7 @@ end
 
 
 task :fetch_jqm do
-  src = "http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.zip"
+  src = "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.zip"
   dir = "vendor/jquerymobile"
   FileUtils.rm_rf dir
   FileUtils.mkdir_p dir
@@ -120,7 +120,7 @@ task :fetch_jqm do
   Dir.chdir dir do
     `wget #{src} -O jqm.zip`
     `unzip -j jqm.zip`
-    `echo 1.0 >> VERSION`
+    `echo 1.1 >> VERSION`
   end
   FileUtils.cp "vendor/templates/jquerymobile_index.html", File.join(dir, "templates", "index.html")
   
@@ -134,7 +134,7 @@ task :fetch_backbone do
     `wget http://documentcloud.github.com/underscore/underscore-min.js`
     `wget http://documentcloud.github.com/backbone/backbone-min.js`
     `wget --no-check-certificate https://raw.github.com/douglascrockford/JSON-js/master/json2.js`
-    `echo 1.5.3 >> VERSION`
+    `echo 0.9.2 >> VERSION`
 
   end
 

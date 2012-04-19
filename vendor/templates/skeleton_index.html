@@ -22,11 +22,12 @@
 	<!-- CSS
   ================================================== -->
 <% if @project.jammit -%>
-  <link rel="stylesheet" href="assets/app.css">
+    <link rel="stylesheet" href="assets/app.css">
 <% else -%>
-  <link rel="stylesheet" href="stylesheets/base.css">
-  <link rel="stylesheet" href="stylesheets/skeleton.css">
-  <link rel="stylesheet" href="stylesheets/layout.css">
+<% @project.css_assets.each do |css| -%>
+    <link rel="stylesheet" href="stylesheets/<%=css %>">
+<% end -%>
+    <link rel="stylesheet" href="stylesheets/app.css">
 <% end -%>
 	<!-- Favicons
 	================================================== -->
@@ -93,8 +94,8 @@
 <% @project.js_assets.each do |js| -%>
     <script src="javascripts/<%=js %>"></script>
 <% end -%>
+<script src="javascripts/app.js"></script>
 
-    <script src="javascripts/tabs.js"></script>
 <% end -%>
 <!-- End Document
 ================================================== -->
