@@ -33,20 +33,20 @@ Generate a simple web project
     
 Then open the public/index.html file in your browser and get to work. Of course, this is only the tip of the iceberg.
    
-### CoffeeScript and Sass support
+=== CoffeeScript and Sass support
 
 To generate a simple web project with CoffeeScript and Sass support, using Guard to monitor files for changes.
 
     qedproject myproject -c -s
 
-    Once the project is created, go into the project folder and run the Guard command. 
+Once the project is created, go into the project folder and run the Guard command. 
     
     cd myproject
     guard 
 
 As you work on the Sass and CoffeeScript files, the corresponding CSS and JS files will be placed in public/javascripts and public/stylesheets respectively.   
   
-### Asset Packaging with Jammit
+=== Asset Packaging with Jammit
   
 Generate a project that minifies CSS and JS files using Jammit. 
 Creates the asset configuration file and a Guardfile.
@@ -58,7 +58,7 @@ using Guard.
 
     qedproject myproject -c -s -a
     
-### Including JavaScript libraries.
+=== Including JavaScript libraries.
 
 Create a new project using jQuery
 
@@ -74,7 +74,7 @@ but also with Sass, CoffeeScript, and asset packaging.
     qedproject myproject -l jquery,backbone -c -s -a
     
 
-### Creating projects with Jasmine BDD tests
+=== Creating projects with Jasmine BDD tests
 
 If you'd like to create projects where you can do Jasmine testing, use the <tt>-t</tt> flag.
 
@@ -85,7 +85,7 @@ a sample spec. If you asked for CoffeeScript, the sample spec will be
 written in CoffeeSript and the Guardfile will be modified to convert specs to
 js files.
 
-### Using the Server and LiveReload
+=== Using the Server and LiveReload
 
 You can make your browser refresh when you change your files. To do that, first open another window and type
     
