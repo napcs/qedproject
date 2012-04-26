@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Qedproject by napcs</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Qedproject</h1>
+        <p>Quick and flexible web project generator for standalone sites or use with QEDServer.   </p>
+        <p class="view"><a href="https://github.com/napcs/qedproject">View the Project on GitHub <small>napcs/qedproject</small></a></p>
+        <ul>
+          <li><a href="https://github.com/napcs/qedproject/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/napcs/qedproject/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/napcs/qedproject">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>What is QEDProject?</h1>
+
+<p>QEDProject creates a simple web project skeleton with support for Sass and CoffeeScript
+as well as asset packaging, LiveReload support, and JavaScript testing. </p>
+
+<p>It also goes great with <a href="http://qedserver.napcs.com/">http://qedserver.napcs.com/</a></p>
+
+<h2>Installation</h2>
+
+<p>QEDProject is distributed as a Ruby gem. That means you'll need the Ruby programming language installed on your machine along with the RubyGems package manager.</p>
+
+<p>Then, simply</p>
+
+<pre><code>$ gem install qedproject
+</code></pre>
+
+<p>to get the latest version and all its dependencies.</p>
+
+<p>If you're on Windows, you'll need to install RubyInstaller and the Devkit. See <a href="http://rubyinstaller.org/add-ons/devkit/">http://rubyinstaller.org/add-ons/devkit/</a> for more.</p>
+
+<p>If you're on OSX, you need to have XCode installed.</p>
+
+<p>If you're on Ubuntu and you want to use CoffeeScript, you'll need to install NodeJS.</p>
+
+<h2>Usage</h2>
+
+<p>Generate a simple web project</p>
+
+<pre><code>$ qedproject myproject
+$ cd myproject
+</code></pre>
+
+<p>Then open the public/index.html file in your browser and get to work. Of course, this is only the tip of the iceberg.</p>
+
+<h3>CoffeeScript and Sass support</h3>
+
+<p>To generate a simple web project with CoffeeScript and Sass support, using Guard to monitor files for changes.</p>
+
+<pre><code>qedproject myproject -c -s
+</code></pre>
+
+<p>Once the project is created, go into the project folder and run the Guard command. </p>
+
+<pre><code>cd myproject
+guard 
+</code></pre>
+
+<p>As you work on the Sass and CoffeeScript files, the corresponding CSS and JS files will be placed in public/javascripts and public/stylesheets respectively.   </p>
+
+<h3>Asset Packaging with Jammit</h3>
+
+<p>Generate a project that minifies CSS and JS files using Jammit. 
+Creates the asset configuration file and a Guardfile.</p>
+
+<pre><code>$ qedproject myproject -a
+</code></pre>
+
+<p>Create a project with CoffeeScript, Sass, and asset packaging support,
+using Guard.</p>
+
+<pre><code>$ qedproject myproject -c -s -a
+</code></pre>
+
+<h3>Including JavaScript libraries.</h3>
+
+<p>Create a new project using jQuery</p>
+
+<pre><code>$ qedproject myproject -l jquery
+</code></pre>
+
+<p>Create a new project using jQuery and Backbone</p>
+
+<pre><code>$ qedproject myproject -l jquery,backbone
+</code></pre>
+
+<p>Create a new project using jQuery and Backbone, 
+but also with Sass, CoffeeScript, and asset packaging.</p>
+
+<pre><code>$ qedproject myproject -l jquery,backbone -c -s -a
+</code></pre>
+
+<h3>Creating projects with Jasmine BDD tests</h3>
+
+<p>If you'd like to create projects where you can do Jasmine testing, use the <tt>-t</tt> flag.</p>
+
+<pre><code>$ qedproject myproject -l jquery,backbone -c -s -a -t
+</code></pre>
+
+<p>This will create a suite.html file in the spec folder, and will create 
+a sample spec. If you asked for CoffeeScript, the sample spec will be 
+written in CoffeeSript and the Guardfile will be modified to convert specs to
+js files.</p>
+
+<p>And if you used jQuery, the jasmine-jquery library will be added to your test suite.</p>
+
+<h3>Using the Server and LiveReload</h3>
+
+<p>You can use the <code>-r</code> flag to add LiveReload support to the project.</p>
+
+<pre><code>$ qedproject myproject -r -c -s -a -t -l jquery
+</code></pre>
+
+<p>You can make your browser refresh when you change your files. To do that, first open another window and type</p>
+
+<pre><code>$ cd myproject
+$ qedproject --server
+</code></pre>
+
+<p>which starts up a web server on port 1337 that serves up your project's <code>public</code> folder. Then install one of the LiveReload plugins for your browser and connect your browser by visiting http://localhost:1337 and activating LiveReload.</p>
+
+<p>To get the browser plugins, visit <a href="http://help.livereload.com/kb/general-use/browser-extensions">http://help.livereload.com/kb/general-use/browser-extensions</a></p>
+
+<h2>Overwriting files</h2>
+
+<p>By default, the CLI tool will not overwrite files with the same name. If you want to replace files, pass the <tt>-o</tt> flag.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/napcs">napcs</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
