@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'test/unit'
-require 'lib/qedproject'
+require 'qedproject'
 require 'pathname'
 
 class Test::Unit::TestCase
