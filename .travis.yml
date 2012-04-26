@@ -3,4 +3,4 @@ rvm:
   - 1.9.3
   - 1.9.2
   - jruby
-script: "bundle exec rake spec"
+script: "bundle exec rake test"
