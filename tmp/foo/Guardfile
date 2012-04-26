@@ -1,3 +1,0 @@
-guard "coffeescript", :input => "coffeescripts", :output => "public/javascripts"
-guard "coffeescript", :input => "spec", :output => "spec"
- 

@@ -46,6 +46,8 @@ Gem::Specification.new do |s|
     "vendor/skeleton/layout.css",
     "vendor/skeleton/favicon.ico",
     "vendor/skeleton/skeleton.css",
+    "vendor/jasmine-jquery/jasmine-jquery.js",
+    "vendor/jasmine/lib/jasmine-1.1.0/jasmine_favicon.png",
     "vendor/jasmine/lib/jasmine-1.1.0/jasmine-html.js",
     "vendor/jasmine/lib/jasmine-1.1.0/jasmine.css",
     "vendor/jasmine/lib/jasmine-1.1.0/jasmine.js",
@@ -76,7 +78,8 @@ Gem::Specification.new do |s|
     "templates/suite.html",
     "templates/index.html",
     "templates/Rakefile",
-    "templates/Gemfile"
+    "templates/Gemfile",
+    "vendor/jasmine-jquery/jasmine-jquery.js"
     
   
   ]

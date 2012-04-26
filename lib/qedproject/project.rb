@@ -7,7 +7,7 @@ module QEDProject
     include QEDProject::Helpers
     
     attr_accessor :path, :libs, :coffeescript, :sass, :jammit, :public_dir, :no_overwrite,
-                  :js_path, :css_path, :images_path, :verbose, :testing, :skip_index,
+                  :js_path, :css_path, :images_path, :verbose, :testing, :skip_index, :livereload,
                   :sorted_libs,
                   :css_assets, :js_assets
     # convenience method to create a new project.
@@ -22,6 +22,10 @@ module QEDProject
     
     def vendor_root
       File.expand_path("../../../vendor", __FILE__)
+    end
+    
+    def uses_jquery?
+      self.libs.include?(:jquery)
     end
     
     # Creates a new Project instance.
@@ -81,6 +85,7 @@ module QEDProject
       self.verbose = options[:verbose]
       self.testing = options[:testing]
       self.skip_index = options[:skip_index]
+      self.livereload = options[:livereload]
       self.no_overwrite = options[:no_overwrite] ? true : false
     end
 
@@ -93,7 +98,7 @@ module QEDProject
 
     # We need a guardfile if the user is using jammit, sass, or coffeescript.
     def needs_guardfile?
-      self.jammit || self.sass || self.coffeescript
+      self.jammit || self.sass || self.coffeescript || self.livereload
     end
     
     # Only jammit needs a config folder for now.
@@ -123,7 +128,9 @@ module QEDProject
       mkdir_p File.join(self.path, "spec"), :verbose => self.verbose
       cp_r File.join(self.vendor_root, "jasmine", "lib"), 
                      File.join(self.path, "spec", "lib"), :verbose => self.verbose
-    
+      if self.uses_jquery?  
+        cp_r File.join(self.vendor_root, "jasmine-jquery", "jasmine-jquery.js"), File.join(self.path, "spec", "lib"), :verbose => self.verbose
+      end
 
       render_template_to_file "suite.html", File.join(self.path, "spec", "suite.html"), binding
       if self.coffeescript

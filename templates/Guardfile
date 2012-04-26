@@ -32,8 +32,11 @@ guard 'livereload' do
   watch(%r{public/.+\.(css|js|html)})
 <% if self.jammit -%>
   watch(%r{public/assets/.+\.(css|js|html)})
-<% else %>
+<% else -%>
   watch(%r{public/javascripts/.+\.js})
   watch(%r{public/stylesheets/.+\.css})
+<% end -%>
+<% if self.testing -%>
+  watch(%r{spec/.+\.(|js|html)})  
 <% end -%>
 end

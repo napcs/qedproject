@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'qedproject'
 gem 'guard'
 <% if self.sass -%>
 gem 'guard-sass'
@@ -9,4 +10,6 @@ gem 'guard-coffeescript'
 <% if self.jammit -%>
 gem 'guard-jammit'
 <% end -%>
+<% if self.livereload -%>
 gem 'guard-livereload'
+<% end -%>

@@ -2,11 +2,10 @@
 ==Modern web project generator
 
 QEDProject creates a simple web project skeleton with support for Sass and CoffeeScript
-as well as asset packaging. It's a tool I wrote to make things easier for me, and
+as well as asset packaging, LiveReload support, and JavaScript testing. It's a tool I wrote to make things easier for me, and
 if you like it, I'd love to hear how you're using it.
 
-
-
+It also goes great with http://qedserver.napcs.com/
 
 == Installation
 
@@ -85,7 +84,13 @@ a sample spec. If you asked for CoffeeScript, the sample spec will be
 written in CoffeeSript and the Guardfile will be modified to convert specs to
 js files.
 
+And if you used jQuery, the jasmine-jquery library will be added to your test suite.
+
 === Using the Server and LiveReload
+
+You can use the `-r` flag to add LiveReload support to the project.
+
+    qedproject myproject -r -c -s -a -t -l jquery
 
 You can make your browser refresh when you change your files. To do that, first open another window and type
     
@@ -152,6 +157,11 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2012-4-24 - 0.3.1
+  * Jasmine-jquery added. 
+  * Fixed the Jasmine template.
+  * Made LiveReload an option instead of the default.
+  
 2012-4-19 - 0.3.0
   * New projects get a Gemfile now to make it a little easier if you use Bundler
   * The Jammit guard now forces rebuilding the assets - it was getting stuck on CoffeeScript files and this fixes it.

@@ -38,6 +38,10 @@ OptionParser.new do |opts|
     options[:libs] = libs.split(",").collect{ |f| f.to_sym }
   end
   
+  opts.on('-r', '--livereload', "Use LiveReload") do
+     options[:livereload] = true
+   end
+  
   opts.on('-o', '--overwrite', "Overwrite existing files with same names") do
     options[:no_overwrite] = false
   end

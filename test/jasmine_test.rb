@@ -59,4 +59,20 @@ class JasmineTest < ProjectTestCase
     end
   end
   
+  
+  
+  def test_includes_jasmine_jquery_when_jquery
+    p = QEDProject::Project.new(@folder, :testing => true, :libs => [:jquery])
+    p.generate
+    assert File.exist? File.join(@folder, "spec", "lib", "jasmine-jquery.js")
+  end
+  
+  def test_guardfile_includes_watch_on_spec_folder_for_livereload_when_testing
+    p = QEDProject::Project.new(@folder, :testing => true, :livereload => true)
+    p.generate
+    source = Pathname.new(File.join(@folder, "Guardfile")).read
+    assert source.include?('watch(%r{spec/.+\.(|js|html)})')
+  end
+  
+  
 end
