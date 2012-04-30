@@ -157,6 +157,9 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2012-4-30 - 0.3.2
+  * Fixed incorrect reference in suite.html for jasmine-jquery
+
 2012-4-24 - 0.3.1
   * Jasmine-jquery added. 
   * Fixed the Jasmine template.
