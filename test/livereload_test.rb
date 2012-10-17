@@ -23,5 +23,11 @@ class LiveReloadTest < ProjectTestCase
     assert source.include?('watch(%r{spec/.+\.(|js|html)})')
   end
   
+  def test_guardfile_does_not_include_watch_on_spec_folder_for_livereload_when_not_invoked
+    p = QEDProject::Project.new(@folder, :sass => true)
+    p.generate
+    source = Pathname.new(File.join(@folder, "Guardfile")).read
+    assert !source.include?('livereload')
+  end
   
 end

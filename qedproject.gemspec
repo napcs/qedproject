@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "vendor/backbone/json2.js",
     "vendor/backbone/underscore-min.js",
     "vendor/jquery/VERSION",
-    "vendor/jquery/jquery-1.7.0.min.js",
+    "vendor/jquery/jquery-1.8.2.min.js",
     "vendor/knockout/VERSION",
     "vendor/knockout/knockout-2.0.0.js",
     "vendor/skeleton/VERSION",
@@ -94,9 +94,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "sass", ">=3.1.8"
   s.add_runtime_dependency "jammit", ">=0.6.5"
   s.add_runtime_dependency "rake", ">=0.8.7"
-  s.add_runtime_dependency "guard", ">=0.8.0"
-  s.add_runtime_dependency "guard-jammit", ">=0.3.0"
-  s.add_runtime_dependency "guard-coffeescript", ">=0.5.3"
+  s.add_runtime_dependency "guard", ">=1.0.0"
+  s.add_runtime_dependency "guard-jammit", ">=1.0.0"
+  s.add_runtime_dependency "guard-coffeescript", ">=1.0.0"
   s.add_runtime_dependency "guard-sass", ">=0.6.0"
-  # s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "guard-livereload", ">=1.0.0"
+  s.add_development_dependency "guard-test"
 end
