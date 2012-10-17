@@ -47,12 +47,15 @@ end
 
 task :fetch_skeleton do
   skeleton = "vendor/skeleton"
+  FileUtils.rm_rf skeleton
   FileUtils.mkdir_p skeleton
   Dir.chdir skeleton do
     `wget --no-check-certificate https://github.com/dhgamache/Skeleton/zipball/master -O skeleton.zip`
     `unzip -j skeleton.zip`
-    `echo 1.1.0 >> VERSION`
+    `echo 1.2.0 >> VERSION`
   end
+
+  FileUtils.mkdir_p File.join(skeleton, "templates")
   FileUtils.cp "vendor/templates/skeleton_index.html", File.join(skeleton, "templates", "index.html")
   
 end

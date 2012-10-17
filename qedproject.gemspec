@@ -37,7 +37,6 @@ Gem::Specification.new do |s|
     "vendor/knockout/VERSION",
     "vendor/knockout/knockout-2.0.0.js",
     "vendor/skeleton/VERSION",
-    "vendor/skeleton/tabs.js",
     "vendor/skeleton/apple-touch-icon-114x114.png",
     "vendor/skeleton/apple-touch-icon-72x72.png",
     "vendor/skeleton/apple-touch-icon.png",
