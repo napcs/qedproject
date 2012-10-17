@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>jQuery Mobile Framework - Fixed Toolbars</title> 
-	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile.css" />  
+	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile-1.2.0.css" />  
 	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
 
 	<script src="../../js/jquery.js"></script>
 	<script src="../../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../../js/jquery.mobile.js"></script>
+	<script src="../../js/jquery.mobile-1.2.0.js"></script>
 
 </head> 
 <body> 
@@ -33,30 +33,23 @@
 			      <li><a href="bars-fixed-methods.html" data-role="button" data-transition="fade" class="ui-btn-active">Methods</a></li>
 			      <li><a href="bars-fixed-events.html" data-role="button" data-transition="fade">Events</a></li>
 			    </ul>
-				
-			
-			
-			
-			
-			
 		   			<p>The fixedtoolbar plugin has the following methods:</p>
 
 		   		<dl>
-			
 		   			<dt><code>show</code> show the toolbar</dt>
 		   			<dd>
-		   				<pre><code>
-		    $("[data-position='fixed']").fixedtoolbar('show');
-		   				</code></pre>
-						
-<div class="ui-body ui-body-e">
-	<p><strong>Note:</strong>Prior to version 1.1, the following syntax was used to show the toolbars, but it is no longer supported:</p>
+		   			
 <pre><code>
-$.mobile.fixedToolbars
-   .show(true);
+$("[data-position='fixed']").fixedtoolbar('show');
+</code>
+</pre>
+
+
+<div class="ui-body ui-body-e">
+	<p><strong>Note:</strong> Prior to version 1.1, the following syntax was used to show the toolbars, but it is no longer supported:</p>
+<pre><code>
+$.mobile.fixedToolbars.show(true);
 </code></pre>
-
-
 </div>							
 						
 		   			</dd>
@@ -90,14 +83,7 @@ $("[data-position='fixed']").fixedtoolbar('updatePagePadding');
 $("[data-position='fixed']").fixedtoolbar('destroy');
 		   				</code></pre>
 		   			</dd>
-					
-			
 			</dl>
-
-		
-			
-			
-			
 
 				</div><!--/content-primary -->		
 
@@ -124,7 +110,7 @@ $("[data-position='fixed']").fixedtoolbar('destroy');
 
 			</div><!-- /content -->
 
-			<div data-role="footer" class="footer-docs" data-theme="a" data-position="fixed">
+			<div data-role="footer" data-theme="a" data-position="fixed">
 					<h1>Fixed Footer</h1>
 			</div>
 

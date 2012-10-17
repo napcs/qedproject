@@ -5,6 +5,29 @@ $(function(){
 	});
 });
 
+// display the version of jQM
+$(document).bind( 'pageinit', function() {
+	var version = $.mobile.version || "dev",
+		words = version.split( "-" ),
+		ver = words[0],
+		str = (words[1] || "Final"),
+		html = ver,
+		foothtml = "Version " + ver;
+
+	if( str.indexOf( "rc" ) == -1 ){
+		str = str.charAt( 0 ).toUpperCase() + str.slice( 1 );
+	} else {
+		str = str.toUpperCase().replace(".", "");
+	}
+
+	if ( $.mobile.version && str ) {
+		html += " <b>" + str + "</b>";
+		foothtml += " " + str;
+	}
+
+	$( ".type-home .ui-content p.jqm-version" ).html( html );
+	$( ".footer-docs p.jqm-version" ).html( foothtml );
+});
 
 // Turn off AJAX for local file browsing
 if ( location.protocol.substr(0,4)  === 'file' ||

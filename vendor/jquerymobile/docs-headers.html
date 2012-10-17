@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>jQuery Mobile Docs - Header Bars</title> 
-	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile.css" />  
+	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile-1.2.0.css" />  
 	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
 
 	<script src="../../js/jquery.js"></script>
 	<script src="../../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../../js/jquery.mobile.js"></script>
+	<script src="../../js/jquery.mobile-1.2.0.js"></script>
 
 </head> 
 <body> 
@@ -25,9 +25,9 @@
 	<div data-role="content">
 		<div class="content-primary">	
 			<h2>Header structure</h2>
-			<p>The <code>header</code> is a toolbar at the top of the page that usually contains the page title text and optional buttons positioned to the the left and/or right of the title for navigation or actions. Headers can optionally be positioned as <a href="bars-fixed.html">fixed</a> so they remain at the top of the screen at all times instead of scrolling with the page.</p> 
+			<p>The <code>header</code> is a toolbar at the top of the page that usually contains the page title text and optional buttons positioned to the left and/or right of the title for navigation or actions. Headers can optionally be positioned as <a href="bars-fixed.html">fixed</a> so they remain at the top of the screen at all times instead of scrolling with the page.</p> 
 			
-			<p>The title text is normally an H1 heading element but it's possible to use any heading level (H1-H6) to allow for semantic flexibility. For example, a page containing multiple mobile 'pages' may use a H1 element on the home 'page' and a H2 element on the secondary pages. All heading levels are styled identically by default to maintain visual consistency.</p> 
+			<p>The title text is normally an H1 heading element but it's possible to use any heading level (H1-H6) to allow for semantic flexibility. For example, a page containing multiple mobile "pages" may use a H1 element on the home "page" and a H2 element on the secondary pages. All heading levels are styled identically by default to maintain visual consistency.</p> 
 
 <div class="highlight"> 
 <pre>
@@ -53,7 +53,7 @@
 			
 			
 	
-			<p>In the standard header configuration, there are slots for buttons on either side of the text heading. Each button is typically an <code>anchor</code> element, but any valid <a href="../buttons/buttons-types.html">button markup</a> will work. To save space, buttons in toolbars are set to <a href="../buttons/buttons-inline.html">inline styling</a> so the button is only as wide as the text and icons it contains. </p>
+			<p>In the standard header configuration, there are slots for buttons on either side of the text heading. Each button is typically an <code>anchor</code> element, but can be a <code>button</code> element as well. To save space, buttons in toolbars are set to <a href="../buttons/buttons-inline.html">inline styling</a> so the button is only as wide as the text and icons it contains. </p>
 
 
 		
@@ -64,7 +64,7 @@
 			
 
 <pre><code>			
-&lt;div data-role=&quot;header&quot; data-position=&quot;inline&quot;&gt;
+&lt;div data-role=&quot;header&quot;&gt;
 	&lt;a href=&quot;index.html&quot; data-icon=&quot;delete&quot;&gt;Cancel&lt;/a&gt;
 	&lt;h1&gt;Edit Contact&lt;/h1&gt;
 	&lt;a href=&quot;index.html&quot; data-icon=&quot;check&quot;&gt;Save&lt;/a&gt;
@@ -83,7 +83,7 @@
 			<p>Buttons automatically adopt the swatch color of the bar they sit in, so a link in a header bar with the "a" color will also be styled as "a" colored buttons. It's simple to make a button visually stand out. Here, we add the <code> data-theme</code> attribute and set the color swatch for the button to "b" to make the "Save" button pop.</p>
 			
 			<pre><code>			
-&lt;div data-role=&quot;header&quot; data-position=&quot;inline&quot;&gt;
+&lt;div data-role=&quot;header&quot;&gt;
 	&lt;a href=&quot;index.html&quot; data-icon=&quot;delete&quot;&gt;Cancel&lt;/a&gt;
 	&lt;h1&gt;Edit Contact&lt;/h1&gt;
 	&lt;a href=&quot;index.html&quot; data-icon=&quot;check&quot; data-theme=&quot;b&quot;&gt;Save&lt;/a&gt;
@@ -106,7 +106,7 @@
 
 <div class="highlight"> 
 <pre><code>
-&lt;div data-role=&quot;header&quot; data-position=&quot;inline&quot;&gt; 
+&lt;div data-role=&quot;header&quot;&gt;
 	&lt;h1&gt;Page Title&lt;/h1&gt;
 	&lt;a href=&quot;index.html&quot; data-icon=&quot;gear&quot; class=&quot;ui-btn-right&quot;&gt;Options&lt;/a&gt;
 &lt;/div&gt;
@@ -126,7 +126,7 @@
 		
 <div class="highlight"> 
 <pre><code>
-&lt;div data-role=&quot;header&quot; data-position=&quot;inline&quot;&gt; 
+&lt;div data-role=&quot;header&quot;&gt;
 	&lt;a href=&quot;index.html&quot; data-icon=&quot;gear&quot; class=&quot;ui-btn-right&quot;&gt;Options&lt;/a&gt;
 	&lt;span class=&quot;ui-title&quot; /&gt;
 &lt;/div&gt;
@@ -158,13 +158,13 @@
 		If you're doing this programmatically, set this option inside the mobileinit event handler.</p>
 
 			<h2>Custom header configurations</h2>
-			<p>If you need to to create a header that doesn't follow the default configuration, simply wrap your custom styled markup in any container, such as <code>div</code>. The plugin won't apply the automatic button logic to the wrapped content inside the header container so you can write custom styles for laying out the content in your header.</p> 
+			<p>If you need to create a header that doesn't follow the default configuration, simply wrap your custom styled markup in any container, such as <code>div</code>. The plugin won't apply the automatic button logic to the wrapped content inside the header container so you can write custom styles for laying out the content in your header.</p> 
 
 			<p>It's also possible to create custom bars without using the header data-role at all. For example, start with any container and add the <code>ui-bar</code> class to apply standard bar padding and add the <code>ui-bar-b</code> class to assign the bar swatch styles from your theme. (The "b" can be any swatch letter.)</p>
 			
 			<pre><code>
 &lt;div <strong>class=&quot;ui-bar ui-bar-b&quot;</strong>&gt;
-	&lt;h3&gt;I&#x27;m just a div with bar classes and a &lt;a href=&quot;#&quot; data-role=&quot;button&quot;&gt;Button&lt;/a&gt;&lt;/h3&gt;
+	&lt;h3&gt;I&#x27;m just a div with bar classes and a mini inline &lt;a href=&quot;#&quot; data-role=&quot;button&quot; data-mini=&quot;true&quot;&gt;Button&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 			</code></pre>
 
@@ -179,7 +179,7 @@
 					<!-- Yes, the inline styles aren't recommended in a real system but they are used to simply illustrate how to tweak CSS -->
 					<div class="ui-bar ui-bar-e">
 						
-						<h3 style="display:inline-block; width:92%; margin-top:5px;">This is an alert message. </h3><div style="display:inline-block; width:8%; margin-top:0px;"><a href="#" data-role="button" data-icon="delete" data-iconpos="notext">Dismiss</a></div><p style="font-size:85%; margin:-.3em 0 1em;">And here's some additional text in a paragraph.</p>
+						<h3 style="display:inline-block; width:92%; margin-top:5px;">This is an alert message. </h3><div style="display:inline-block; width:8%; margin-top:0px; text-align:right;"><a href="#" data-role="button" data-icon="delete" data-inline="true" data-iconpos="notext">Dismiss</a></div><p style="font-size:85%; margin:-.3em 0 1em;">And here's some additional text in a paragraph.</p>
 					</div>
 				</div><!--/content-primary -->		
 
@@ -207,7 +207,8 @@
 			</div><!-- /content -->
 
 			<div data-role="footer" class="footer-docs" data-theme="c">
-					<p>&copy; 2011-12 The jQuery Foundation</p>
+					<p class="jqm-version"></p>
+				<p>&copy; 2012 jQuery Foundation and other contributors</p>
 			</div>
 
 			</div><!-- /page -->

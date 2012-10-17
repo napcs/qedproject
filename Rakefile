@@ -115,7 +115,7 @@ end
 
 
 task :fetch_jqm do
-  src = "http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.zip"
+  src = "http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.zip"
   dir = "vendor/jquerymobile"
   FileUtils.rm_rf dir
   FileUtils.mkdir_p dir
@@ -123,7 +123,7 @@ task :fetch_jqm do
   Dir.chdir dir do
     `wget #{src} -O jqm.zip`
     `unzip -j jqm.zip`
-    `echo 1.1 >> VERSION`
+    `echo 1.2 >> VERSION`
   end
   FileUtils.cp "vendor/templates/jquerymobile_index.html", File.join(dir, "templates", "index.html")
   

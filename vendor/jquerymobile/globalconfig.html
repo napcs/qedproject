@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>jQuery Mobile Docs - Configuring default settings</title>
-	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile.css" />
+	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
 
 	<script src="../../js/jquery.js"></script>
 	<script src="../../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../../js/jquery.mobile.js"></script>
+	<script src="../../js/jquery.mobile-1.2.0.js"></script>
 
 </head>
 <body>
@@ -100,32 +100,47 @@ $(document).bind("mobileinit", function(){
 	<dt><code>defaultPageTransition</code> <em>string</em>, default: 'fade'</dt>
 	<dd>Set the default transition for page changes that use Ajax. Note: default changed from 'slide' to 'fade' in 1.1. Set to 'none' for no transitions.</dd>
 
+	<dt><code>getMaxScrollForTransition</code> <em>integer</em>, default: 3</dt>
+	<dd>Set a scroll position breakpoint for transitions. If the scroll position is greater than the window height multiplied by the value that has been set, transition "none" will be used.</dd>
+    
 	<dt><code>gradeA</code> <em>function that returns a boolean</em>, default: a function returning the value of $.support.mediaquery</dt>
 	<dd>Any support conditions that must be met in order to proceed.</dd>
 
 	<dt><code>hashListeningEnabled</code> <em>boolean</em>, default: true</dt>
-	<dd>jQuery Mobile will automatically listen and handle changes to the location.hash. Disabling this will prevent jQuery Mobile from handling hash changes, which allows you to handle them yourself or use simple deep-links within a document that scroll to a particular ID.</dd>
+	<dd>jQuery Mobile will automatically listen and handle changes to the location.hash. Disabling this will prevent jQuery Mobile from handling hash changes, which allows you to handle them yourself or use simple deep-links within a document that scroll to a particular id.</dd>
 
 	<dt><code>ignoreContentEnabled</code> <em>boolean</em>, default: false</dt>
 	<dd><em>Warning:</em> Setting this property to true will cause performance degradation on enhancement. Once set, all automatic enhancements made by the framework to each enhanceable element of the user's markup will first check for a <code>data-enhance=false</code> parent node. If one is found the markup will be ignored. This setting and the accompanying data attribute provide a mechanism through which users can prevent enhancement over large sections of markup.</dd>
 
 	<dt><code>linkBindingEnabled</code> <em>boolean</em>, default: true</dt>
-	<dd>jQuery Mobile will automatically bind the clicks on anchor tags in your document. Setting this options to false will prevent all anchor click handling <em>including</em> the addition of active button state and alternate link bluring. This should only be used when attempting to delegate the click management to another library or custom code.</dd>
+	<dd>jQuery Mobile will automatically bind the clicks on anchor tags in your document. Setting this option to false will prevent all anchor click handling <em>including</em> the addition of active button state and alternate link bluring. This should only be used when attempting to delegate the click management to another library or custom code.</dd>
 
 	<dt><code>loadingMessage</code> <em>string</em>, default: "loading"</dt>
-	<dd>Set the text that appears when a page is loading. If set to false, the message will not appear at all.</dd>
+	<dd>
+    Set the text that appears when a page is loading. If set to false, the message will not appear at all.
+    <p class="ui-body ui-body-e"><strong>Deprecated</strong> in 1.2 - use <code>$.mobile.loader.prototype.options.text</code> instead. See the <a href="../../docs/pages/loader.html">loader docs</a> for more.</p>
+  </dd>
 
 	<dt><code>loadingMessageTextVisible</code> <em>boolean</em>, default: false</dt>
-	<dd>Whether the text should be visible when a loading message is shown. The text is always visible for loading errors.</dd>
+	<dd>
+    Whether the text should be visible when a loading message is shown. The text is always visible for loading errors.
+    <p class="ui-body ui-body-e"><strong>Deprecated</strong> in 1.2 - use <code>$.mobile.loader.prototype.options.textVisible</code> instead. See the <a href="../../docs/pages/loader.html">loader docs</a> for more.</p>
+  </dd>
 
 	<dt><code>loadingMessageTheme</code> <em>string</em>, default: "a"</dt>
-	<dd>The theme that the loading message box uses when text is visible.</dd>
+	<dd>
+    The theme that the loading message box uses when text is visible.
+    <p class="ui-body ui-body-e"><strong>Deprecated</strong> in 1.2 - use <code>$.mobile.loader.prototype.options.theme</code> instead. See the <a href="../../docs/pages/loader.html">loader docs</a> for more.</p>
+	</dd>
 
-	<dt><code>minScrollBack</code> <em>string</em>, default: 250</dt>
+	<dt><code>maxTransitionWidth</code> <em>integer, boolean</em>, default: false</dt>
+	<dd>Set a max width for transitions. The option accepts any number representing a pixel width and its default value <code>false</code>. If a number value is set, transition "none" will be used if the window is wider than the specified value.</dd>
+    
+	<dt><code>minScrollBack</code> <em>integer</em>, default: 250</dt>
 	<dd>Minimum scroll distance that will be remembered when returning to a page.</dd>
 
 	<dt><code>ns</code> <em>string</em>, default: ""</dt>
-	<dd>The namespace used in data- attributes (e.g., data-role). Can be set to any string, including a blank string which is the default. When using, it's clearest if you include a trailing dash, such as "mynamespace-" which maps to <code>data-mynamespace-foo="..."</code>.
+	<dd>The namespace used in data attributes (e.g., data-role). Can be set to any string, including a blank string which is the default. When using, it's clearest if you include a trailing dash, such as "mynamespace-" which maps to <code>data-mynamespace-foo="..."</code>.
 		<p>If you use data- namespacing, you will need to update/override one selector in the theme CSS. The following data selectors should incorporate the namespace you're using:
 		<pre><code>
 .ui-mobile [data-<strong>mynamespace-</strong>role=page], .ui-mobile [data-<strong>mynamespace-</strong>role=dialog], .ui-page { ...
@@ -139,14 +154,23 @@ $(document).bind("mobileinit", function(){
 	<dt><code>pageLoadErrorMessageTheme</code> <em>string</em>, default: "e"</dt>
 	<dd>Set the theme that the error message box uses.</dd>
 
+	<dt><code>phonegapNavigationEnabled</code> <em>boolean</em>, default: false</dt>
+	<dd>Replace calls to <code>window.history.back</code> with PhoneGap's navigation helper where it is available. This addresses navigation issues on page refresh in Android PhoneGap applications using jQuery Mobile.</dd>
+
 	<dt><code>pushStateEnabled</code> <em>boolean</em>, default: true</dt>
-	<dd>Enhancement to use <code>history.replaceState</code> in supported browsers, to convert the hash-based Ajax URL into the full document path. Note that we <a href="../pages/page-navmodel.html">recommend</a> disabling this feature if Ajax is disabled or if extensive use of external links are used.</dd>
+	<dd>Enhancement to use <code>history.replaceState</code> in supported browsers, to convert the hash-based Ajax URL into the full document path. Note that we <a href="../pages/page-navmodel.html">recommend</a> disabling this feature if Ajax is disabled or if external links are used extensively.</dd>
 
 	<dt><code>subPageUrlKey</code> <em>string</em>, default: "ui-page"</dt>
 	<dd>The url parameter used for referencing widget-generated sub-pages (such as those generated by nested listviews). Translates to <em>example.html<strong>&ui-page=</strong>subpageIdentifier</em>. The hash segment before &ui-page= is used by the framework for making an Ajax request to the URL where the sub-page exists.</dd>
 
 	<dt><code>touchOverflowEnabled</code> <em>boolean</em>, default: false</dt>
-	<dd>Enable smoother page transitions and true fixed toolbars in devices that support both the <code>overflow:</code> and <code>overflow-scrolling: touch; </code> CSS properties. <strong>Note: Deprecated for 1.1.0.</strong></dd>
+	<dd>
+	Enable smoother page transitions and true fixed toolbars in devices that support both the <code>overflow:</code> and <code>overflow-scrolling: touch; </code> CSS properties.
+	<p class="ui-body ui-body-e"><strong>Deprecated</strong> in 1.1.0</p>
+	</dd>
+    
+	<dt><code>transitionFallbacks.[transition]</code> <em>string</em>, default: "fade"</dt>
+	<dd>Set the fallback transition for browsers that don't support 3D transforms for a specific transition type.</dd>
 
 </dl>
 	</div><!--/content-secondary -->
@@ -172,7 +196,8 @@ $(document).bind("mobileinit", function(){
 </div><!-- /content -->
 
 <div data-role="footer" class="footer-docs" data-theme="c">
-		<p>&copy; 2011-12 The jQuery Foundation</p>
+		<p class="jqm-version"></p>
+		<p>&copy; 2012 jQuery Foundation and other contributors</p>
 </div>
 
 </div><!-- /page -->

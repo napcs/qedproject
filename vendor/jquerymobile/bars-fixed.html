@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>jQuery Mobile Framework - Fixed Toolbars</title> 
-	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile.css" />  
+	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile-1.2.0.css" />  
 	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
 
 	<script src="../../js/jquery.js"></script>
 	<script src="../../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../../js/jquery.mobile.js"></script>
+	<script src="../../js/jquery.mobile-1.2.0.js"></script>
 
 </head> 
 <body> 
@@ -80,16 +80,16 @@
 				<li><a href="http://filamentgroup.github.com/jQuery-Mobile-FixedToolbar-Legacy-Polyfill/">Preview URL using the code in the repo above</a></li>
 		</ul>
 		
-		<p>Just include the CSS and JS files after your references to jQuery Mobile and Fixed toolbars will work similar to jQuery Mobile 1.0 in iOS4.3, with the inclusion of the new API for the 1.1 fixedtoolbar plugin.</p>
+		<p>Just include the CSS and JS files after your references to jQuery Mobile and Fixed toolbars will work similarly to jQuery Mobile 1.0 in iOS4.3, with the inclusion of the new API for the 1.1 fixedtoolbar plugin.</p>
 		
 		<p>If you have any improvements to suggest, fork the <a href="https://github.com/filamentgroup/jQuery-Mobile-FixedToolbar-Legacy-Polyfill">gist</a> on github and let us know!</p>
 		
-		<h2>Known issue with form controls inside fixed toolbars, and programatic scroll</h2>	
+		<h2>Known issue with form controls inside fixed toolbars, and programmatic scroll</h2>	
 		<p>An obscure issue exists in iOS5 and some Android platforms where form controls placed inside fixed-positioned containers can lose their hit area when the window is programatically scrolled (using <code>window.scrollTo</code> for example). This is not an issue specific to jQuery Mobile, but because of it, we recommend not programatically scrolling a document when using form controls inside jQuery Mobile fixed toolbars. <a href="https://github.com/scottjehl/Device-Bugs/issues/1">This ticket</a> from the <a href="https://github.com/scottjehl/Device-Bugs/">Device Bugs project</a> tracker explains this problem in more detail.</p>
 		
 		
 		<h2>Known issues in Android 2.2/2.3</h2>	
-		<p>Android 2.2/2.3’s implementation of <code>position: fixed;</code> can, in conjunction with seemingly unrelated styles and markup patterns, cause a number of strange issues, particularly in the case of <code>position: absolute</code> elements inside of <code>position: fixed</code> elements. While we’ve done our best to work around a number of these unique bugs within the scope of the library, custom styles may cause a number of issues.</p>
+		<p>Android 2.2/2.3's implementation of <code>position: fixed;</code> can, in conjunction with seemingly unrelated styles and markup patterns, cause a number of strange issues, particularly in the case of <code>position: absolute</code> elements inside of <code>position: fixed</code> elements. While we've done our best to work around a number of these unique bugs within the scope of the library, custom styles may cause a number of issues.</p>
 		<ul>
 			<li>Form elements elsewhere on the page—select menus in particular—can fail to respond to user interaction when an <em>empty</em> absolute positioned element is placed within a fixed position element. In rare cases—and specific to Android 2.2—this can cause <em>entire pages</em> to fail to respond to user interaction. This can seemingly be solved by adding any character to the absolute positioned element, including a non-breaking space, and in some cases even whitespace.</li>
 			<li>The above-described issue can also be triggered by an absolute positioned image inside of a fixed position element, but <em>only</em> when that image is using something <em>other than its inherent dimensions</em>. If a height or width is specified on the image using CSS, or the image src is invalid (thus having no inherent height and width), this issue can occur. If an image that is inherently, say, 50x50 pixels is placed in a fixed element and left at its inherent dimensions, this issue does not seem to occur.</li>
@@ -98,7 +98,7 @@
 			<li>Any element that triggers the on-screen keyboard, when placed inside a <code>position: fixed</code> element, will fail to respond to user input when using anything other than the default keyboard. This includes Swype, XT9 or, it seems, any input method apart from the standard non-predictive keyboard.</li>
 		</ul>
 			
-		<p>While we will continue to try to find ways to mitigate these bugs as best we can, we currently advise against implementing fixed toolbars containing complicated user styles and form elements without extensive testing in all versions of Android’s native browser.</p>
+		<p>While we will continue to try to find ways to mitigate these bugs as best we can, we currently advise against implementing fixed toolbars containing complicated user styles and form elements without extensive testing in all versions of Android's native browser.</p>
 		
 		<p>The following pages are designed to test fixed toolbars and form elements: 
 					<a href="bars-fixed-forms-a.html">demo app</a>,

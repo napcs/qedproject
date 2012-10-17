@@ -117,7 +117,7 @@ if( $_SERVER[ "HTTP_X_REQUESTED_WITH" ] && $_SERVER[ "HTTP_X_REQUESTED_WITH" ] =
 <title>Vehicles</title>
 <link rel="stylesheet"  href="../../../css/themes/default/">
 <script src="../../../js/jquery.js"></script>
-<script src="../../../js/"></script>
+<script src="../../../js/jquery.mobile-1.2.0.js"></script>
 </head>
 <body>
 <div data-role="page" data-add-back-btn="true">

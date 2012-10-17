@@ -3,13 +3,13 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>jQuery Mobile Framework - Static Containers, States</title> 
-	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile.css" /> 
+	<title>jQuery Mobile Framework - Themes</title> 
+	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile-1.2.0.css" /> 
 	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
 
 	<script src="../../js/jquery.js"></script>
 	<script src="../../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../../js/jquery.mobile.js"></script>
+	<script src="../../js/jquery.mobile-1.2.0.js"></script>
 
 </head> 
 <body> 
@@ -38,9 +38,20 @@
 			</ul>
 			
 		<h2>ThemeRoller</h2>
-		<a href="http://www.jquerymobile.com/themeroller" rel="external"><img src="../_assets/images/themroller-mobile-logo.png" width="250" style="float:right; margin-left:25px;" alt="Themroller Mobile Logo"></a>
-		The easiest way to create custom themes is with the <a href="http://www.jquerymobile.com/themeroller" rel="external">ThemeRoller tool</a>. It allows you to build a theme, then download a custom CSS file, ready to be dropped into your project.
+		<a href="http://www.jquerymobile.com/themeroller" rel="external"><img src="../_assets/images/themroller-mobile-logo.png" width="250" alt="Themroller Mobile Logo"></a>
 		
+		The easiest way to create custom themes is with the <a href="http://www.jquerymobile.com/themeroller" rel="external">ThemeRoller tool</a>. It allows you to build a theme, then download a custom CSS file, ready to be dropped into your project.
+
+		<h2>Default theme swatch mapping for components</h2>
+
+		<p>If no theme swatch letter is set at all, the framework uses the "a" swatch (black in the default theme) for headers and footers and the "c" swatch (light gray in the default theme) for the page content to maximize contrast between the both.</p>
+        
+        <p>All items in containers inherit the swatch from their parent. Exceptions to this rule are the listdivider in listviews, the header of nested list pages, and the button of split button lists. Those default to "b" (blue in the default theme). Count bubbles default to "c" (silver in the default theme).
+        
+        <p>Note that there is also a swatch named "active" (bright blue in the default theme) which is used to indicate an active selected item. See the <strong>Global "Active" state</strong> further down this page for further information on the <strong>active</strong> swatch.</p>
+        
+        <p>The page loading dialog and error message don't inherit a swatch theme. The loading dialog defaults to swatch "a" (black in the default theme) and the error message to swatch "e" (yellow in the default theme). You can configure those defaults globally. See <a href="globalconfig.html">configuring defaults</a>.
+
 		<h2>Themes &amp; swatches</h2>
 		
 		<p>The theme system separates color and texture from structural styles that define things like padding and dimensions. This allows theme colors and textures to be defined once in the stylesheet and to be mixed, matched, and combined to achieve a wide range of visual effects. </p>
@@ -63,7 +74,7 @@
 			<div class="ui-bar ui-bar-e">Bar E - <a href="#" data-role="none" class="ui-link">Link</a></div>
 		</div><!-- end swatch-bars -->
 		
-		<p>By default, the framework assigns the "a" swatch to all headers and footers, because these are typically given high visual priority in an application. To set the color of a bar to a different swatch color, simply add the <code> data-theme</code> attribute to your header or footer and specify an alternate swatch letter ('b' or 'd', for example) and the specified theme swatch color will be applied. Learn more about <a href="../toolbars/bars-themes.html">toolbar theming</a>.</p>
+		<p>By default, the framework assigns the "a" swatch to all headers and footers, because these are typically given high visual priority in an application. To set the color of a bar to a different swatch color, simply add the <code> data-theme</code> attribute to your header or footer and specify an alternate swatch letter ("b" or "d", for example) and the specified theme swatch color will be applied. Learn more about <a href="../toolbars/bars-themes.html">toolbar theming</a>.</p>
 		
 		
 		
@@ -163,49 +174,54 @@
 		<p>If you want to add visual emphasis to a button, an alternate swatch color can be set by adding a <code> data-theme="a"</code> to the anchor. Once an alternate swatch color is set on a button in the markup, the framework won't override that color if the parent theme is changed, because you made a conscious decision to set it.</p>
 		
 		<div class="swatch-bars">
-			<div data-role="header" data-theme="a" class="ui-bar" >
+			<div class="ui-bar ui-bar-a">
+				Bar A
 				<div><!-- wrapper div to have control over butttons -->
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">A</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">B</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">C</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">D</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">E</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">Button A</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">Button B</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">Button C</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">Button D</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">Button E</a>
 				</div>
 			</div>
-			<div data-role="header" data-theme="b" class="ui-bar" >
+			<div class="ui-bar ui-bar-b">
+				Bar B
 				<div><!-- wrapper div to have control over butttons -->
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">A</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">B</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">C</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">D</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">E</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">Button A</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">Button B</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">Button C</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">Button D</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">Button E</a>
 				</div>
 			</div>
-			<div data-role="header" data-theme="c" class="ui-bar" >
+			<div class="ui-bar ui-bar-c">
+				Bar C
 				<div><!-- wrapper div to have control over butttons -->
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">A</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">B</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">C</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">D</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">E</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">Button A</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">Button B</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">Button C</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">Button D</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">Button E</a>
 				</div>
 			</div>
-			<div data-role="header" data-theme="d" class="ui-bar" >
+			<div class="ui-bar ui-bar-d">
+				Bar D
 				<div><!-- wrapper div to have control over butttons -->
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">A</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">B</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">C</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">D</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">E</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">Button A</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">Button B</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">Button C</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">Button D</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">Button E</a>
 				</div>
 			</div>
-			<div data-role="header" data-theme="e" class="ui-bar" >
+			<div class="ui-bar ui-bar-e">
+				Bar E
 				<div><!-- wrapper div to have control over butttons -->
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">A</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">B</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">C</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">D</a>
-					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">E</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="a">Button A</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="b">Button B</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="c">Button C</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="d">Button D</a>
+					<a href="index.html" data-role="button" data-icon="arrow-l" data-theme="e">Button E</a>
 				</div>
 			</div>
 			
@@ -236,7 +252,7 @@
 			<dt><code>ui-body-(a-z)</code></dt>
 			<dd>Applies the content body theme styles for the selected swatch letter. Commonly used in conjunction with <code>ui-body</code> structural class to add the standard content block padding styles. </dd>
 			<dt><code>ui-btn-up-(a-z)</code></dt>
-			<dd>Applies the button/clickable element theme styles for the selected swatch letter. Commonly used in with the <code>ui-btn-hover-(a-z)</code> and <code>ui-btn-down-(a-z)</code> interaction class states to provide visual feedback and <code>ui-btn-active</code> to indicate the selected or "on" state.</dd>
+			<dd>Applies the button/clickable element theme styles for the selected swatch letter. Commonly used with the <code>ui-btn-hover-(a-z)</code> and <code>ui-btn-down-(a-z)</code> interaction class states to provide visual feedback and <code>ui-btn-active</code> to indicate the selected or "on" state.</dd>
 			<dt><code>ui-corner-all</code></dt>
 			<dd>Applies the theme's global border-radius for rounded corners and is used for container or grouped items in the framework (inset lists, radiobutton sets). There are additional classes for all the possible combinations of rounded corners, for example: <code>ui-corner-tl</code> (top left only), <code>-top</code> (both top corners), <code>-left</code> (both left corners),  etc. A second full set of corner classes is provided for buttons so these can have a different corner radius. These use classes with a similar naming convention, but with "btn-corner" instead of "corner", like this: <code>.ui-<strong>btn-corner</strong>-all</code>.</dd>
 			<dt><code>ui-shadow</code></dt>
@@ -246,7 +262,7 @@
 		</dl>
 
 			<h3>Overriding themes</h3>
-			<p>The themes are meant as a solid starting point, but are meant to be customized. Since everything is controlled by CSS, it's easy to use a web inspector tool to identify the style properties you want to modify. The set of of theme classes (global) and semantic structural classes (widget-specific) added to elements provide a rich set of possible selectors to target style overrides against. We recommend adding an external stylesheet to the <code>head</code>, placed <strong>after</strong> the structure and theme stylesheet references, that contain all your style overrides. This allows you to easily update to newer versions of the library because overrides are kept separate from the library code.</p>
+			<p>The themes are meant as a solid starting point, but are meant to be customized. Since everything is controlled by CSS, it's easy to use a web inspector tool to identify the style properties you want to modify. The set of of theme classes (global) and semantic structural classes (widget-specific) added to elements provide a rich set of possible selectors against which to target style overrides. We recommend adding an external stylesheet to the <code>head</code>, placed <strong>after</strong> the structure and theme stylesheet references, that contain all your style overrides. This allows you to easily update to newer versions of the library because overrides are kept separate from the library code.</p>
 			
 			
 		<p><strong>Learn more</strong> about theming individual components:</p>
@@ -282,7 +298,8 @@
 </div><!-- /content -->
 
 <div data-role="footer" class="footer-docs" data-theme="c">
-		<p>&copy; 2011-12 The jQuery Foundation</p>
+		<p class="jqm-version"></p>
+		<p>&copy; 2012 jQuery Foundation and other contributors</p>
 </div>
 	
 </div><!-- /page -->

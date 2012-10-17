@@ -4,12 +4,12 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>jQuery Mobile Docs - Native Form Controls</title>
-	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile.css" />
+	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
 
 	<script src="../../js/jquery.js"></script>
 	<script src="../../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../../js/jquery.mobile.js"></script>
+	<script src="../../js/jquery.mobile-1.2.0.js"></script>
 
 </head>
 <body>
@@ -31,6 +31,7 @@
 
 			<p>Although the framework automatically enhances form elements and buttons into <a href="forms-all.html">touch input optimized controls</a> to streamline development, it's easy to tell jQuery Mobile to leave these elements alone so the standard, native control can be used instead.</p>
 			<p>Adding the <code>data-role="none"</code> attribute to any form or button element tells the framework to not apply any enhanced styles or scripting. The examples below all have this attribute in place to demonstrate the effect. You may need to write custom styles to lay out your form controls because we try to leave all the default styling intact.</p>
+			<p>As of Version 1.1 adding the <code>data-enhance="false"</code> attribute to any container will tell the framework not to enhance any element inside. To activate this functionality, <code>$.mobile.ignoreContentEnabled</code> must be set to <code>true</code>. View <a href="../api/globalconfig.html">Configuring Defaults</a> before using it.</p>
 
 			<div data-role="fieldcontain">
 	         <label for="name">Text Input:</label>
@@ -240,7 +241,8 @@
 </div><!-- /content -->
 
 <div data-role="footer" class="footer-docs" data-theme="c">
-		<p>&copy; 2011-12 The jQuery Foundation</p>
+		<p class="jqm-version"></p>
+		<p>&copy; 2012 jQuery Foundation and other contributors</p>
 </div>
 	
 </div><!-- /page -->

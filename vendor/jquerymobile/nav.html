@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>jQuery UI Mobile Framework - Documentation</title>
-	<link rel="stylesheet"  href="../css/themes/default/jquery.mobile.css" />
+	<link rel="stylesheet"  href="../css/themes/default/jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet" href="_assets/css/jqm-docs.css"/>
 
 	<script src="../js/jquery.js"></script>
 	<script src="../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../js/jquery.mobile.js"></script>
+	<script src="../js/jquery.mobile-1.2.0.js"></script>
 	
 </head> 
 <body> 
@@ -63,6 +63,9 @@
 			<li data-filtertext="events api animationComplete transition css">
 				<a href="api/events.html">Animation events</a>
 			</li>
+			<li data-filtertext="listview autodivider">
+				<a href="lists/lists-autodividers.html">Automatic listview dividers</a>
+			</li>
 			<li data-filtertext="button link submit cancel image reset mini buttonmarkup enable disable">
 				<a href="buttons/buttons-types.html">Buttons</a>
 			</li>
@@ -77,12 +80,15 @@
 			</li>
 			<li data-filtertext="collapsible expandable content block spindown disclosure triangle tree nested">
 				<a href="content/content-collapsible.html">Collapsible content</a>
-			</li>		
+			</li>
+			<li data-filtertext="collapsible set listview">
+				<a href="lists-collapsible.html">Collapsible lists</a>
+			</li>
 			<li data-filtertext="data attribute guide api list help reference">
 				<a href="api/data-attributes.html">Data attribute reference</a>
 			</li>
 			<li data-filtertext="page dialog modal overlay theme data-rel=dialog transition rel=back closeBtnText button history">
-				<a href="pages/page-dialogs.html">Dialogs</a>
+				<a href="pages/dialog/index.html">Dialogs</a>
 			</li>
 			<li data-filtertext="forms constrain css disable disabling enable ui-disabled class style">
 				<a href="forms/docs-forms.html">Disabling form elements</a>
@@ -114,7 +120,7 @@
 			<li data-filtertext="toolbars fixed footers scroll tap to hide show toggle">
 				<a href="toolbars/docs-footers.html">Footer toolbars</a>
 			</li>
-			<li data-filtertext="global optionss settings document.ready mobileinit ns namespace autoInitializePage subPageUrlKey activePageClass activeBtnClass ajaxEnabled linkBindingEnabled hashListeningEnabled pushStateEnabled defaultPageTransition touchOverflowEnabled defaultDialogTransition minScrollBack loadingMessage loadingMessageTheme pageLoadErrorMessage pageLoadErrorMessageTheme loadingMessageTextVisible gradeA ignoreContentEnabled">
+			<li data-filtertext="global options settings document.ready mobileinit ns namespace autoInitializePage subPageUrlKey activePageClass activeBtnClass ajaxEnabled linkBindingEnabled hashListeningEnabled pushStateEnabled defaultPageTransition touchOverflowEnabled defaultDialogTransition minScrollBack loadingMessage loadingMessageTheme pageLoadErrorMessage pageLoadErrorMessageTheme loadingMessageTextVisible gradeA ignoreContentEnabled">
 				<a href="api/globalconfig.html">Global options (mobileinit)</a>
 			</li>
 			<li data-filtertext="grouped buttons toggle side">
@@ -162,11 +168,11 @@
 			<li data-filtertext="listview link markup overview conventions types">
 				<a href="lists/index.html">Listview overview</a>
 			</li>
-			<li data-filtertext="methods api mobile changePage loadPage jqmData jqmRemoveData showPageLoadingMsg hidePageLoadingMsg fixedToolbars.show fixedToolbars.hide path.parseUrl path.makePathAbsolute path.makeUrlAbsolute path.isSameDomain path.isRelativeUrl path.isAbsoluteUrl base silentScroll activePage jqmEnhanceable">
-				<a href="api/methods.html">Methods API</a>
-			</li>
 			<li data-filtertext="listview link thumbnail images large square">
 				<a href="lists/lists-thumbnails.html">Listview thumbnails</a>
+			</li>
+			<li data-filtertext="methods api mobile changePage loadPage jqmData jqmRemoveData showPageLoadingMsg hidePageLoadingMsg fixedToolbars.show fixedToolbars.hide path.parseUrl path.makePathAbsolute path.makeUrlAbsolute path.isSameDomain path.isRelativeUrl path.isAbsoluteUrl base silentScroll activePage jqmEnhanceable">
+				<a href="api/methods.html">Methods API</a>
 			</li>
 			<li data-filtertext="forms smaller compact mini toolbars">
 				<a href="forms/forms-all-mini.html">Mini form elements</a>
@@ -174,7 +180,7 @@
 			<li data-filtertext="forms native not styled role none">
 				<a href="forms/forms-all-native.html">Native form elements</a>
 			</li>
-			<li data-filtertext="link navbar navigation tabs">
+			<li data-filtertext="link navbar navigation tabs icons">
 				<a href="toolbars/docs-navbar.html">Navbars</a>
 			</li>
 			<li data-filtertext="listview link nested ul ol drilldown">
@@ -194,6 +200,9 @@
 			</li>
 			<li data-filtertext="events api pagebeforeload pageload pageloadfailed ajax nav">
 				<a href="api/events.html">Page load events</a>
+			</li>
+			<li data-filtertext="pages message load mobile loading show textvisible loader">
+				<a href="pages/loader.html">Page loading widget</a>
 			</li>
 			<li data-filtertext="pages overview boilerplate getting started setup">
 				<a href="pages/index.html">Pages overview</a>
@@ -216,8 +225,11 @@
 			<li data-filtertext="toolbars fixed persistent tab bar footer header">
 				<a href="toolbars/footer-persist-a.html">Persistent toolbars</a>
 			</li>
-			<li data-filtertext="phonegap compile appstore export device api XSS mobileinit pushstate loadUrlTimeoutValue allowCrossDomainPages local file:// URL support.cors UIWebView">
+			<li data-filtertext="phonegap compile appstore export device api XSS mobileinit pushstate loadUrlTimeoutValue allowCrossDomainPages local file:// URL support.cors UIWebView native iOS">
 				<a href="pages/phonegap.html">PhoneGap</a>
+			</li>
+			<li data-filtertext="pages popup window lightbox">
+				<a href="pages/popup/index.html">Popup</a>
 			</li>
 			<li data-filtertext="navigation model ajax prefetch preload lazyload loader loadPage">
 				<a href="pages/page-cache.html">Prefetching pages</a>

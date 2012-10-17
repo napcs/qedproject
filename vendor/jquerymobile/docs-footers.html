@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>jQuery Mobile Docs - Footer Configuration</title> 
-	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile.css" />  
+	<link rel="stylesheet"  href="../../css/themes/default/jquery.mobile-1.2.0.css" />  
 	<link rel="stylesheet" href="../_assets/css/jqm-docs.css"/>
 
 	<script src="../../js/jquery.js"></script>
 	<script src="../../docs/_assets/js/jqm-docs.js"></script>
-	<script src="../../js/jquery.mobile.js"></script>
+	<script src="../../js/jquery.mobile-1.2.0.js"></script>
 
 </head> 
 <body> 
@@ -37,13 +37,13 @@
 </div>
 	
 			
-			<p>The <code>footer</code> toolbar will be be themed with the "a" swatch by default (black in the default theme) but you can easily <a href="bars-themes.html">set the theme swatch color</a>.</p> 
+			<p>The <code>footer</code> toolbar will be themed with the "a" swatch by default (black in the default theme) but you can easily <a href="bars-themes.html">set the theme swatch color</a>.</p> 
 			
 			<div data-role="footer">
 				<h4>Footer content</h4>
 			</div>
 			
-			<p>The page footer is very similar to the header in terms of options and configuration. The primary difference is that the footer is designed to be less structured than the header to allow for more flexibility, so the framework doesn't automatically place buttons to the left or right based on source order as it does in the header. </p>
+			<p>The page footer is very similar to the header in terms of options and configuration. The primary difference is that the footer is designed to be less structured than the header to allow more flexibility, so the framework doesn't automatically reserve slots for buttons to the left or right as it does in headers.</p>
 			<p>Since footers do not have the same prescriptive markup conventions as headers, we recommend using layout <a href="../content/content-grids.html">grids</a> or writing custom styles to achieve the design you want.</p> 
 
 
@@ -91,7 +91,7 @@
 	
 			<h2>Adding form elements</h2>
 
-			<p><a href="../forms/forms-all.html">Forms</a> elements and other content can also be added to toolbars. Here is an example of a <a href="../forms/selects/index.html">select</a> menu inside a footer bar. We recommend using <a href="../forms/forms-all-mini.html" >mini-sized</a> form elements in toolbars by adding the <code>data-mini="true"</code> attribute:</p>
+			<p><a href="../forms/forms-all.html">Form</a> elements and other content can also be added to toolbars. Here is an example of a <a href="../forms/selects/index.html">select</a> menu inside a footer bar. We recommend using <a href="../forms/forms-all-mini.html" >mini-sized</a> form elements in toolbars by adding the <code>data-mini="true"</code> attribute:</p>
 		
 
 			<div data-role="footer" class="ui-bar">
@@ -144,7 +144,8 @@
 					</div><!-- /content -->
 
 					<div data-role="footer" class="footer-docs" data-theme="c">
-							<p>&copy; 2011-12 The jQuery Foundation</p>
+							<p class="jqm-version"></p>
+				<p>&copy; 2012 jQuery Foundation and other contributors</p>
 					</div>
 
 					</div><!-- /page -->
