@@ -157,6 +157,16 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2012-10-25 - 0.4.0
+* Change temp directory name from tmp to _qedtmp
+* jquery mpbile update to 1.2.0
+* Updated Skeleton to 1.2.0
+* Updated jquery to 1.8.2
+* Fixes the livereload inclusion bug that shows up with Guard.
+* Fixed a duplicate test name and added test case for Jasmine
+* Updated Jasmine to 1.2.0
+* Renamed Suite.html back to SpecRunner.html to be more standard
+
 2012-4-30 - 0.3.2
   * Fixed incorrect reference in suite.html for jasmine-jquery
 
