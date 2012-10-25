@@ -13,7 +13,7 @@ class JasmineTest < ProjectTestCase
     p.generate
     assert File.exist? File.join(@folder, "spec")
     assert File.exist? File.join(@folder, "spec", "lib")
-    assert File.exist? File.join(@folder, "spec", "suite.html")
+    assert File.exist? File.join(@folder, "spec", "SpecRunner.html")
   end
   
   def test_includes_js_test_when_testing_without_coffeescript
@@ -36,24 +36,24 @@ class JasmineTest < ProjectTestCase
     assert source.include?('guard "coffeescript", :input => "spec", :output => "spec"')
   end
   
-  def test_guardfile_includes_watch_on_spec_folder_when_testing_with_coffeescript
-    p = QEDProject::Project.new(@folder, :testing => true, :coffeescript => true)
+  def test_guardfile_does_not_include_watch_on_spec_folder_when_not_testing_with_coffeescript
+    p = QEDProject::Project.new(@folder, :testing => true, :sass => true)
     p.generate
     source = Pathname.new(File.join(@folder, "Guardfile")).read
-    assert source.include?('guard "coffeescript", :input => "spec", :output => "spec"')
+    assert !source.include?('guard "coffeescript", :input => "spec", :output => "spec"')
   end
   
   def test_adds_app_js_to_jasmine_suite_when_using_jammit
     p = QEDProject::Project.new(@folder, :testing => true, :jammit => true, :libs => [:backbone])
     p.generate
-    source = Pathname.new(File.join(@folder, "spec", "suite.html")).read
+    source = Pathname.new(File.join(@folder, "spec", "SpecRunner.html")).read
     assert source.include?("src=\"../public/assets/app.js\"")
   end
   
   def test_adds_libraries_to_the_jasmine_suite_when_not_using_jammit
     p = QEDProject::Project.new(@folder, :testing => true, :libs => [:backbone])
     p.generate
-    source = Pathname.new(File.join(@folder, "spec", "suite.html")).read
+    source = Pathname.new(File.join(@folder, "spec", "SpecRunner.html")).read
     QEDProject::Libraries::Backbone.js_files.each do |js|
       assert source.include?("src=\"../public/javascripts/#{js}\"")
     end

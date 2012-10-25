@@ -132,7 +132,7 @@ module QEDProject
         cp_r File.join(self.vendor_root, "jasmine-jquery", "jasmine-jquery.js"), File.join(self.path, "spec", "lib"), :verbose => self.verbose
       end
 
-      render_template_to_file "suite.html", File.join(self.path, "spec", "suite.html"), binding
+      render_template_to_file "suite.html", File.join(self.path, "spec", "SpecRunner.html"), binding
       if self.coffeescript
         render_template_to_file "sampleSpec.coffee", File.join(self.path, "spec", "sampleSpec.coffee"), binding
       else
