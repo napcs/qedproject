@@ -4,7 +4,7 @@ stylesheets:
   - <%=File.join(self.css_path, lib) %>
   <% end -%>
 <% if self.sass -%>
-  - <%= File.join("tmp", "app.css") %>
+  - <%= File.join("_qedtmp", "app.css") %>
 <% else -%>
   - <%= File.join(self.css_path, "app.css") %>
 <% end -%>
@@ -15,7 +15,7 @@ javascripts:
   - <%=File.join(self.js_path, lib) %>
   <% end -%>
 <% if self.coffeescript -%>
-  - <%= File.join("tmp", "app.js") %>
+  - <%= File.join("_qedtmp", "app.js") %>
 <% else -%>
   - <%= File.join(self.js_path, "app.js") %>
 <% end -%>

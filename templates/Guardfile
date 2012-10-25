@@ -1,13 +1,13 @@
 <% if self.sass -%>
 <% if self.jammit -%>
-guard "sass", :input => "sass", :output => "tmp"
+guard "sass", :input => "sass", :output => "_qedtmp"
 <% else -%>
 guard "sass", :input => "sass", :output => "public/stylesheets"
 <% end -%>
 <% end -%>
 <% if self.coffeescript -%>
 <% if self.jammit -%>
-guard "coffeescript", :input => "coffeescripts", :output => "tmp"
+guard "coffeescript", :input => "coffeescripts", :output => "_qedtmp"
 <% else -%>
 guard "coffeescript", :input => "coffeescripts", :output => "public/javascripts"
 <% end -%>
@@ -20,10 +20,10 @@ guard "jammit", :force => true do
   watch(/^javascripts\/(.*)\.js/)
   watch(/^stylesheets\/(.*)\.css/)
 <% if self.coffeescript -%>
-  watch(/^tmp\/(.*)\.js/)
+  watch(/^_qedtmp\/(.*)\.js/)
 <% end -%>
 <% if self.sass -%>
-  watch(/^tmp\/(.*)\.css/)
+  watch(/^_qedtmp\/(.*)\.css/)
 <% end -%>
 end
 <% end -%>

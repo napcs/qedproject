@@ -158,7 +158,7 @@ module QEDProject
       mkdir_p( self.path, :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.public_dir), :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.images_path), :verbose => self.verbose)
-      mkdir_p( File.join(self.path, "tmp"), :verbose => self.verbose)
+      mkdir_p( File.join(self.path, "_qedtmp"), :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.js_path), :verbose => self.verbose)
       mkdir_p( File.join(self.path, self.css_path), :verbose => self.verbose)
       mkdir_p( File.join(self.path, "config"), :verbose => self.verbose) if self.needs_config_folder?

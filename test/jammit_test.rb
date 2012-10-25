@@ -63,7 +63,7 @@ class JammitTest < ProjectTestCase
    end  
   
    def test_puts_coffeescript_in_tmp_folder_with_jammit
-     text = 'guard "coffeescript", :input => "coffeescripts", :output => "tmp"'
+     text = 'guard "coffeescript", :input => "coffeescripts", :output => "_qedtmp"'
      p = QEDProject::Project.new(@folder, :coffeescript => true, :jammit => true)
      p.generate
      source = Pathname.new(File.join(@folder, "Guardfile")).read
@@ -79,7 +79,7 @@ class JammitTest < ProjectTestCase
    end  
   
    def test_puts_sass_in_tmp_folder_with_jammit
-     text = 'guard "sass", :input => "sass", :output => "tmp"'
+     text = 'guard "sass", :input => "sass", :output => "_qedtmp"'
      p = QEDProject::Project.new(@folder, :sass => true, :jammit => true)
      p.generate
   
@@ -140,14 +140,14 @@ class JammitTest < ProjectTestCase
       p = QEDProject::Project.new(@folder, :jammit => true, :coffeescript => true)
       p.generate
       source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
-      assert source.include?("tmp/app.js")
+      assert source.include?("_qedtmp/app.js")
     end
     
     def test_adds_app_css_to_tmp_folder_in_asset_file_when_sass
       p = QEDProject::Project.new(@folder, :jammit => true, :sass => true)
       p.generate
       source = Pathname.new(File.join(@folder, "config", "assets.yml")).read
-      assert source.include?("tmp/app.css")
+      assert source.include?("_qedtmp/app.css")
     end
     
     
