@@ -1,6 +1,6 @@
 require 'rake'
 require 'rake/testtask' 
-require 'rake/rdoctask' 
+require 'rdoc/task' 
 require 'qedproject/version'
 
 # require 'rcov/rcovtask'

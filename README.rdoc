@@ -157,6 +157,11 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2013-02-17 - 0.4.1
+* Minor update of gem dependencies
+* Force Guard to use 1.4.0 for Ruby 1.8.7 compatibility
+* Last version that supports Ruby 1.8.7
+
 2012-10-25 - 0.4.0
 * Change temp directory name from tmp to _qedtmp
 * jquery mpbile update to 1.2.0
