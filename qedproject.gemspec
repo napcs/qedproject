@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "qedproject"
 
+  s.required_ruby_version = ">=1.9.3"
   s.files         = [
     "bin/qedproject",
     "lib/qedproject.rb",
@@ -92,12 +93,11 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "sass", ">=3.2.0"
   s.add_runtime_dependency "jammit", ">=0.6.5"
   s.add_runtime_dependency "rake", ">=0.8.7"
-  s.add_runtime_dependency "guard", "1.4.0"
+  s.add_runtime_dependency "guard", ">=1.6.0"
   s.add_runtime_dependency "guard-jammit", ">=1.0.1"
   s.add_runtime_dependency "guard-coffeescript", ">=1.2.0"
   s.add_runtime_dependency "guard-sass", ">=1.0.0"
   s.add_runtime_dependency "guard-livereload", ">=1.0.0"
   s.add_development_dependency "guard-test"
   s.add_development_dependency "rdoc"
-  
 end

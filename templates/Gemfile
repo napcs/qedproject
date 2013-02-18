@@ -13,3 +13,10 @@ gem 'guard-jammit'
 <% if self.livereload -%>
 gem 'guard-livereload'
 <% end -%>
+
+group :development do
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+end
+

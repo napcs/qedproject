@@ -3,7 +3,7 @@ require 'qedproject'
 
 require 'optparse'
 
-banner = "QEDProject #{QEDProject::VERSION} (C) 2011 Brian P. Hogan\n"
+banner = "QEDProject #{QEDProject::VERSION} (C) 2011-2013 Brian P. Hogan\n"
 banner << "-" * banner.length
 puts banner
 
@@ -14,15 +14,15 @@ OptionParser.new do |opts|
   opts.banner << "\nAvailable Libraries are: #{LIBRARIES.join(",")}"
 
 
-  opts.on('-s', '--sass', "Use SASS") do
+  opts.on('-s', '--sass', "Use Sass for CSS preprocessing") do
     options[:sass] = true
   end
 
-  opts.on('-c', '--coffee', "Use Coffeescript") do
+  opts.on('-c', '--coffee', "Use Coffeescript for JavaScript preprocessing") do
     options[:coffeescript] = true
   end
   
-  opts.on('-a', '--assets', "Use Jammit to manage assets") do
+  opts.on('-a', '--assets', "Use Jammit to combine assets to single files") do
     options[:jammit] = true
   end
     
