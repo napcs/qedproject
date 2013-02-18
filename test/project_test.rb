@@ -113,13 +113,13 @@ class ProjectTest < ProjectTestCase
 
   def test_js_assets_has_jquery_first
     p = QEDProject::Project.new(@folder, :libs => [:ember], :jammit => true)
-    assert p.js_assets[0].include?("jquery-1.8.2.min.js")
+    assert p.js_assets[0].include?("jquery-1.9.1.min.js")
     assert p.js_assets[1].include?("ember-0.9.js")
   end
   
   def test_js_assets_has_jquery_first_and_only_includes_it_once_when_explicitly_requested_second
     p = QEDProject::Project.new(@folder, :libs => [:ember, :jquery], :jammit => true)
-    assert p.js_assets[0].include?("jquery-1.8.2.min.js")
+    assert p.js_assets[0].include?("jquery-1.9.1.min.js")
     assert p.js_assets[1].include?("ember-0.9.js")
     # p.js_assets[2] is cos ember uses app.js
     assert_nil p.js_assets[3]
@@ -128,7 +128,7 @@ class ProjectTest < ProjectTestCase
   
   def test_js_assets_has_jquery_first_and_only_includes_it_once_when_explicitly_requested_first
     p = QEDProject::Project.new(@folder, :libs => [:jquery, :ember], :jammit => true)
-    assert p.js_assets[0].include?("jquery-1.8.2.min.js")
+    assert p.js_assets[0].include?("jquery-1.9.1.min.js")
     assert p.js_assets[1].include?("ember-0.9.js")
     # p.js_assets[2] is cos ember uses app.js
     assert_nil p.js_assets[3]

@@ -23,6 +23,6 @@ class JqueryTest < ProjectTestCase
   def test_should_add_jquery_when_specified
     p = QEDProject::Project.new(@folder, :libs => [:jquery])
     p.generate
-    assert File.exist?(File.join(@folder, "public", "javascripts","jquery-1.8.2.min.js"))
+    assert File.exist?(File.join(@folder, "public", "javascripts","jquery-1.9.1.min.js"))
   end
 end

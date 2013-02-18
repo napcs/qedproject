@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
     "vendor/backbone/json2.js",
     "vendor/backbone/underscore-min.js",
     "vendor/jquery/VERSION",
-    "vendor/jquery/jquery-1.8.2.min.js",
+    "vendor/jquery/jquery-1.9.1.min.js",
     "vendor/knockout/VERSION",
     "vendor/knockout/knockout-2.0.0.js",
     "vendor/skeleton/VERSION",

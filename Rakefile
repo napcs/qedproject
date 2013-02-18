@@ -108,8 +108,8 @@ task :fetch_jquery do
   FileUtils.rm_rf("vendor/jquery")
   FileUtils.mkdir("vendor/jquery")
   Dir.chdir("vendor/jquery") do
-    `wget http://code.jquery.com/jquery-1.8.2.min.js`
-    `echo 1.8.2 >> VERSION`
+    `wget http://code.jquery.com/jquery-1.9.1.min.js`
+    `echo 1.9.1 >> VERSION`
   end
 end
 
