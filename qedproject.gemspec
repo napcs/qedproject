@@ -47,9 +47,9 @@ Gem::Specification.new do |s|
     "vendor/skeleton/favicon.ico",
     "vendor/skeleton/skeleton.css",
     "vendor/jasmine-jquery/jasmine-jquery.js",
-    "vendor/jasmine/lib/jasmine-1.2.0/jasmine-html.js",
-    "vendor/jasmine/lib/jasmine-1.2.0/jasmine.css",
-    "vendor/jasmine/lib/jasmine-1.2.0/jasmine.js",
+    "vendor/jasmine/lib/jasmine-1.3.1/jasmine-html.js",
+    "vendor/jasmine/lib/jasmine-1.3.1/jasmine.css",
+    "vendor/jasmine/lib/jasmine-1.3.1/jasmine.js",
     "vendor/jquerymobile/jquery.mobile-1.2.0.css",
     "vendor/jquerymobile/jquery.mobile-1.2.0.js",
     "vendor/jquerymobile/ajax-loader.gif",
@@ -99,5 +99,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "guard-sass", ">=1.0.0"
   s.add_runtime_dependency "guard-livereload", ">=1.0.0"
   s.add_development_dependency "guard-test"
-  s.add_development_dependency "rdoc"
+  s.add_development_dependency "rdoc"  
 end
