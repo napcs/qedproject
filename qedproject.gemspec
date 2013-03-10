@@ -96,8 +96,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "guard-jammit", ">=1.0.1"
   s.add_runtime_dependency "guard-coffeescript", ">=1.2.0"
   s.add_runtime_dependency "guard-sass", ">=1.0.0"
-  s.add_runtime_dependency "guard-livereload", ">=1.0.0"
+  s.add_runtime_dependency "guard-livereload", "=1.0.3"
   s.add_development_dependency "guard-test"
   s.add_development_dependency "rdoc"
-  
 end
