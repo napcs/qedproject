@@ -157,6 +157,10 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2013-03-09 - 0.4.2
+* Fixed dependency issue with guard-livereload.
+* Seriously, last version that supports 1.8.7.
+
 2013-02-17 - 0.4.1
 * Minor update of gem dependencies
 * Force Guard to use 1.4.0 for Ruby 1.8.7 compatibility
