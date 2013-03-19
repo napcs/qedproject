@@ -85,6 +85,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "coffee-script", ">=2.2.0"
   s.add_runtime_dependency "sass", ">=3.2.0"
   s.add_runtime_dependency "jammit", ">=0.6.5"
+  s.add_runtime_dependency "uglifier", ">=1.3.0"
   s.add_runtime_dependency "rake", ">=0.8.7"
   s.add_runtime_dependency "guard", ">=1.6.0"
   s.add_runtime_dependency "guard-jammit", ">=1.0.1"
@@ -93,4 +94,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "guard-livereload", ">=1.1.0"
   s.add_development_dependency "guard-test"
   s.add_development_dependency "rdoc"
+  s.add_development_dependency "mocha", ">=0.13.0"
+  
 end

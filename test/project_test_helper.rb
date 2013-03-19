@@ -2,6 +2,8 @@ require 'rubygems'
 require 'test/unit'
 require 'qedproject'
 require 'pathname'
+require "mocha/setup"
+
 
 class Test::Unit::TestCase
   class << self

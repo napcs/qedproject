@@ -73,6 +73,7 @@ else
     puts "Specify a project. Use qedproject -h for options."
   else
     begin
+      options[:bundle] = true
       QEDProject::Project.create(project, options)
     rescue QEDProject::BadLibraryError => e
       puts e.message

@@ -9,7 +9,8 @@ module QEDProject
     attr_accessor :path, :libs, :coffeescript, :sass, :jammit, :public_dir, :no_overwrite,
                   :js_path, :css_path, :images_path, :verbose, :testing, :skip_index, :livereload,
                   :sorted_libs,
-                  :css_assets, :js_assets
+                  :css_assets, :js_assets,
+                  :run_bundle
     # convenience method to create a new project.
     # Simply call create with the project path and the options.
     def self.create(project_path, options= {})
@@ -38,7 +39,15 @@ module QEDProject
       self.path = project_path
       self.process_options(options)
       self.set_paths
-    end                          
+    end          
+    
+    def bundle
+      Dir.chdir(self.path) do
+        puts "Bundling assets"
+        `bundle install`
+      end
+        
+    end                
 
     def collect_libraries
       
@@ -87,6 +96,8 @@ module QEDProject
       self.skip_index = options[:skip_index]
       self.livereload = options[:livereload]
       self.no_overwrite = options[:no_overwrite] ? true : false
+      self.run_bundle = options[:bundle]
+      
     end
 
     # Set up the basic paths we'll use throughout
@@ -121,6 +132,8 @@ module QEDProject
       self.create_guardfile if self.needs_guardfile?
       self.create_rakefile
       self.create_gemfile
+      self.bundle if self.run_bundle
+      
     end
 
     # includes the Jasmine BDD framework for javascript testing

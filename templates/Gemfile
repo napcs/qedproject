@@ -9,6 +9,7 @@ gem 'guard-coffeescript'
 <% end -%>
 <% if self.jammit -%>
 gem 'guard-jammit'
+gem 'uglifier'
 <% end -%>
 <% if self.livereload -%>
 gem 'guard-livereload'

@@ -3,7 +3,16 @@
 
 QEDProject creates a simple web project skeleton with support for Sass and CoffeeScript
 as well as asset packaging, LiveReload support, and JavaScript testing. It's a tool I wrote to make things easier for me, and
-if you like it, I'd love to hear how you're using it.
+if you like it, I'd love to hear how you're using it. It makes use of Guard and many other Ruby tools and lets you create projects with:
+
+* Sass
+* CoffeeScript
+* Backbone.JS
+* jQuery
+* jQuery Mobile
+* Ember.JS
+* Skeleton (http://getskeleton.com)
+* Knockout.JS
 
 It also goes great with http://qedserver.napcs.com/
 
@@ -13,13 +22,14 @@ QEDProject is distributed as a Ruby gem. That means you'll need the Ruby program
 
 Then, simply
 
+    gem install bundler
     gem install qedproject
 
 to get the latest version and all its dependencies.
 
 If you're on Windows, you'll need to install RubyInstaller and the Devkit. See http://rubyinstaller.org/add-ons/devkit/ for more.
 
-If you're on OSX, you need to have XCode installed.
+If you're on OSX, you need to have XCode installed with the Command Line tools
 
 If you're on Ubuntu and you want to use CoffeeScript, you'll need to install NodeJS.
 
@@ -30,7 +40,7 @@ Generate a simple web project
     qedproject myproject
     cd myproject
     
-Then open the public/index.html file in your browser and get to work. Of course, this is only the tip of the iceberg.
+Then open the `public/index.html` file in your browser and get to work. Of course, this is only the tip of the iceberg.
    
 === CoffeeScript and Sass support
 
@@ -38,10 +48,10 @@ To generate a simple web project with CoffeeScript and Sass support, using Guard
 
     qedproject myproject -c -s
 
-Once the project is created, go into the project folder and run the Guard command. 
+Once the project is created, go into the project folder and run the Guard command.
     
     cd myproject
-    guard 
+    bundle exec guard 
 
 As you work on the Sass and CoffeeScript files, the corresponding CSS and JS files will be placed in public/javascripts and public/stylesheets respectively.   
   
@@ -59,6 +69,15 @@ using Guard.
     
 === Including JavaScript libraries.
 
+QEDProject has several popular libraries included. 
+
+* jquery
+* jquerymobile
+* backbone
+* ember
+
+as well as the simple Responsive Design framework Skeleton
+
 Create a new project using jQuery
 
     qedproject myproject -l jquery
@@ -72,6 +91,12 @@ but also with Sass, CoffeeScript, and asset packaging.
 
     qedproject myproject -l jquery,backbone -c -s -a
     
+
+Create a new project using the Skeleton design framework,
+jQuery, Backbone, also with Sass, CoffeeScript, and asset packaging.
+
+    qedproject myproject -l jquery,backbone,skeleton -c -s -a
+
 
 === Creating projects with Jasmine BDD tests
 
@@ -157,6 +182,18 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2013-03-19 - 0.5.0
+* Ruby 1.9 only. No more support for 1.8.7
+* Updated jQuery to 1.9.1
+* Updated Ember to 1.0.0-rc1
+* Updated Knockout to 2.2
+* Updated Jasmine to 1.3.1
+* Updated Backbone.js to 0.9.10
+* Updated mustache to 0.7.2
+* Updated Guard depenndency to 1.6 so tmux is supported
+* QEDProject creation automatically runs 'bundle install'
+* Compression for Jammit uses uglifier now.
+
 2013-03-09 - 0.4.2
 * Fixed dependency issue with guard-livereload.
 * Seriously, last version that supports 1.8.7.

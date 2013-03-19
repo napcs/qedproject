@@ -133,4 +133,17 @@ class ProjectTest < ProjectTestCase
     # p.js_assets[2] is filled cos ember uses handlebars
     assert_nil p.js_assets[3]
   end
+  
+  def test_does_not_run_bundler_by_default
+    p = QEDProject::Project.new(@folder)
+    p.expects(:bundle).never
+    p.generate
+  end
+  
+  def test_runs_bundler_when_option_passed
+    p = QEDProject::Project.new(@folder, :bundle => true)
+    p.expects(:bundle)
+    p.generate
+  end
+  
 end

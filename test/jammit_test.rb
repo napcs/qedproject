@@ -155,6 +155,7 @@ class JammitTest < ProjectTestCase
       p = QEDProject::Project.new(@folder, :jammit => true)
       p.generate
       assert Pathname.new(File.join(@folder, "Gemfile")).read.include?("gem 'guard-jammit'")
+      assert Pathname.new(File.join(@folder, "Gemfile")).read.include?("uglifier")
     end
     
     
