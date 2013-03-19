@@ -3,8 +3,8 @@ module QEDProject
     class Jquerymobile < QEDProject::Libraries::Base
       library :jquerymobile
       depends_on [:jquery]
-      set_js_files ["jquery.mobile-1.2.0.js"]
-      set_css_files ["jquery.mobile-1.2.0.css" ] 
+      set_js_files ["jquery.mobile-1.3.0.js"]
+      set_css_files ["jquery.mobile-1.3.0.css" ] 
       set_image_files [
         "ajax-loader.gif",
         "icons-18-black.png",
