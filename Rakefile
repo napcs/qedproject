@@ -90,8 +90,8 @@ task :fetch_mustache do
   FileUtils.rm_rf("vendor/mustache")
   FileUtils.mkdir("vendor/mustache")
   Dir.chdir("vendor/mustache") do
-    `wget --no-check-certificate https://raw.github.com/janl/mustache.js/0.3.0/mustache.js`
-    `echo 0.3.0 >> VERSION`
+    `wget --no-check-certificate https://raw.github.com/janl/mustache.js/0.7.2/mustache.js`
+    `echo 0.7.2 >> VERSION`
   end
 end
 
