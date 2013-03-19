@@ -60,7 +60,6 @@ Gem::Specification.new do |s|
     "vendor/jquerymobile/templates/index.html",
     "vendor/mustache/mustache.js",
     "vendor/mustache/VERSION",
-    "vendor/ember/app.js",
     "vendor/ember/ember-1.0.0-rc.1.js",
     "vendor/ember/handlebars-1.0.0-rc.3.js",
     "vendor/ember/VERSION",
