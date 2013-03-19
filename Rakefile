@@ -36,12 +36,12 @@ task :fetch_ember do
   
   dir = "vendor/ember"
   FileUtils.rm_rf dir
-  FileUtils.mkdir_p File.join dir, "templates"
-  FileUtils.cp "vendor/templates/ember_index.html", File.join(dir, "templates", "index.html")
+  FileUtils.mkdir_p dir
   Dir.chdir dir do
-    `wget --no-check-certificate https://github.com/downloads/emberjs/starter-kit/starter-kit.0.9.zip -O ember.zip`
-    `unzip -j ember.zip`
-    `echo 0.9 >> VERSION`
+    `wget --no-check-certificate https://raw.github.com/emberjs/starter-kit/v1.0.0-rc.1/js/libs/ember-1.0.0-rc.1.js`
+    `wget --no-check-certificate https://raw.github.com/emberjs/starter-kit/v1.0.0-rc.1/js/libs/handlebars-1.0.0-rc.3.js`
+    
+    `echo 1.0.0.rc1 >> VERSION`
   end
 end
 

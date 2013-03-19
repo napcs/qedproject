@@ -66,13 +66,5 @@ class EmberTest < ProjectTestCase
       assert source.include?("- javascripts/#{js}")
     end
   end
-  
-  def test_uses_ember_template
-    p = QEDProject::Project.new(@folder, :libs => [:ember])
-    p.generate
-    source = Pathname.new(File.join(@folder, "public", "index.html")).read
-    assert source.include?('<h1>My Ember Project</h1>')
     
-  end
-  
 end
