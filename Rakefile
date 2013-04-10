@@ -142,14 +142,14 @@ task :fetch_jqm do
 end
 
 task :fetch_backbone do
-  FileUtils.rm_rf("vendor/backbone")
-  FileUtils.mkdir_p("vendor/backbone")
-  Dir.chdir("vendor/backbone") do
-    `wget http://documentcloud.github.com/underscore/underscore-min.js`
-    `wget http://documentcloud.github.com/backbone/backbone-min.js`
+  dir = "vendor/backbone"
+  FileUtils.rm_rf(dir)
+  FileUtils.mkdir_p(dir)
+  Dir.chdir(dir) do
+    `wget http://underscorejs.org/underscore.js`
+    `wget http://backbonejs.org/backbone.js`
     `wget --no-check-certificate https://raw.github.com/douglascrockford/JSON-js/master/json2.js`
-    `echo 0.9.2 >> VERSION`
-
+    `echo 1.0.0 >> VERSION`
   end
 
   
