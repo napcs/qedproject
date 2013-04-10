@@ -182,6 +182,9 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2013-04-10 - 0.6.0
+* added Angular.js support
+
 2013-03-19 - 0.5.0
 * Ruby 1.9 only. No more support for 1.8.7
 * Updated jQuery to 1.9.1

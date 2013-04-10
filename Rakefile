@@ -104,6 +104,17 @@ task :fetch_knockout do
   end
 end
 
+task :fetch_angular do
+  dir = "vendor/angular"
+  FileUtils.rm_rf(dir)
+  FileUtils.mkdir(dir)
+  Dir.chdir(dir) do
+    `wget --no-check-certificate https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js`
+    FileUtils.mv "angular.js", "angular-1.0.6.js"
+    `echo 1.0.6 >> VERSION`
+  end
+end
+
 task :fetch_jquery do
   FileUtils.rm_rf("vendor/jquery")
   FileUtils.mkdir("vendor/jquery")
