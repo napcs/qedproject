@@ -38,10 +38,10 @@ task :fetch_ember do
   FileUtils.rm_rf dir
   FileUtils.mkdir_p dir
   Dir.chdir dir do
-    `wget --no-check-certificate https://raw.github.com/emberjs/starter-kit/v1.0.0-rc.1/js/libs/ember-1.0.0-rc.1.js`
-    `wget --no-check-certificate https://raw.github.com/emberjs/starter-kit/v1.0.0-rc.1/js/libs/handlebars-1.0.0-rc.3.js`
+    `wget --no-check-certificate https://raw.github.com/emberjs/starter-kit/v1.0.0-rc.2/js/libs/ember-1.0.0-rc.2.js`
+    `wget --no-check-certificate https://raw.github.com/emberjs/starter-kit/v1.0.0-rc.2/js/libs/handlebars-1.0.0-rc.3.js`
     
-    `echo 1.0.0.rc1 >> VERSION`
+    `echo 1.0.0.rc2 >> VERSION`
   end
 end
 

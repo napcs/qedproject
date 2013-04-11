@@ -43,7 +43,7 @@ class ProjectTest < ProjectTestCase
       
   def test_gets_array_of_js_files_for_libs
     p = QEDProject::Project.new(@folder, :libs => [:backbone, :jquery])
-    assert p.js_assets.include?("backbone-min.js")
+    assert p.js_assets.include?("backbone.js")
   end
   
   def test_adds_index_page
