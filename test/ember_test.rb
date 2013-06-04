@@ -22,17 +22,17 @@ class EmberTest < ProjectTestCase
            read.include?('src="assets/app.js"')
   end
   
-  def test_loads_backbone_if_not_using_jammit_if_backbone_is_specified
-    p = QEDProject::Project.new(@folder, :libs => [:ember, :backbone])
+  def test_loads_ember_if_not_using_jammit_if_backbone_is_specified
+    p = QEDProject::Project.new(@folder, :libs => [:ember])
     p.generate
     source = Pathname.new(File.join(@folder, "public", "index.html")).read
-    QEDProject::Libraries::Backbone.js_files.each do |js|
+    QEDProject::Libraries::Ember.js_files.each do |js|
       assert source.include?("src=\"javascripts/#{js}\"")
     end
   end
 
   def test_loads_ember_js_files_into_page
-    p = QEDProject::Project.new(@folder, :libs => [:ember, ])
+    p = QEDProject::Project.new(@folder, :libs => [:ember ])
     p.generate
     source = Pathname.new(File.join(@folder, "public", "index.html")).read
     QEDProject::Libraries::Ember.js_files.each do |js|
@@ -49,7 +49,7 @@ class EmberTest < ProjectTestCase
     end
   end
 
-  def test_loads_jqery_into_index_page_when_specified
+  def test_loads_jqery_into_index_page_when_ember_specified
     p = QEDProject::Project.new(@folder, :libs => [:ember])
     p.generate
     source = Pathname.new(File.join(@folder, "public", "index.html")).read
