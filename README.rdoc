@@ -13,6 +13,7 @@ if you like it, I'd love to hear how you're using it. It makes use of Guard and 
 * Ember.JS
 * Skeleton (http://getskeleton.com)
 * Knockout.JS
+* Angular.JS and Angular.resource
 
 It also goes great with http://qedserver.napcs.com/
 
@@ -182,6 +183,16 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2013-07-19 - 0.6.2
+* Fixed Backbone, Underscore bugs introduced in 0.6.0
+* Fixed a minor issue with dependencies
+
+2013-06-04 - 0.6.1
+* Updated and fixed bad tests
+* Added Angular.js 1.1.5 and Angular resource
+* Updated jquery to 1.10.1
+* Updated jasmine-jquery to 1.5.2
+
 2013-04-10 - 0.6.0
 * added Angular.js support
 * Updated Backbone.js to 1.0.0

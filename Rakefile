@@ -72,6 +72,17 @@ task :fetch_jasmine do
 
 end
 
+task :fetch_jasmine_jquery do
+  version = "1.5.2"
+  jasmine = "vendor/jasmine-jquery"
+  FileUtils.rm_rf jasmine
+  FileUtils.mkdir jasmine
+  Dir.chdir jasmine do
+    `wget https://raw.github.com/velesin/jasmine-jquery/master/lib/jasmine-jquery.js`
+    `echo #{version} >> VERSION`
+  end
+
+end
 task :fetch_js do
   Rake::Task[:fetch_knockout].invoke
   Rake::Task[:fetch_backbone].invoke
@@ -96,31 +107,35 @@ task :fetch_mustache do
 end
 
 task :fetch_knockout do
+  version = "2.2.1"
   FileUtils.rm_rf("vendor/knockout")
   FileUtils.mkdir("vendor/knockout")
   Dir.chdir("vendor/knockout") do
-    `wget --no-check-certificate http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.js`
-    `echo 2.0.0 >> VERSION`
+  `wget http://knockoutjs.com/downloads/knockout-#{version}.js`    
+  `echo #{version} >> VERSION`
   end
 end
 
 task :fetch_angular do
+  version = "1.1.5"
   dir = "vendor/angular"
   FileUtils.rm_rf(dir)
   FileUtils.mkdir(dir)
   Dir.chdir(dir) do
-    `wget --no-check-certificate https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js`
-    FileUtils.mv "angular.js", "angular-1.0.6.js"
-    `echo 1.0.6 >> VERSION`
+    `wget http://code.angularjs.org/#{version}/angular.js`
+    `wget http://code.angularjs.org/#{version}/angular-resource.js`
+    FileUtils.mv "angular.js", "angular-#{version}.js"
+    `echo #{version} >> VERSION`
   end
 end
 
 task :fetch_jquery do
+  version = "1.10.1"
   FileUtils.rm_rf("vendor/jquery")
   FileUtils.mkdir("vendor/jquery")
   Dir.chdir("vendor/jquery") do
-    `wget http://code.jquery.com/jquery-1.9.1.min.js`
-    `echo 1.9.1 >> VERSION`
+    `wget http://code.jquery.com/jquery-#{version}.min.js`
+    `echo #{version} >> VERSION`
   end
 end
 

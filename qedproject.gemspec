@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = QEDProject::VERSION
   s.authors     = ["Brian P. Hogan"]
   s.email       = ["brianhogan@napcs.com"]
-  s.homepage    = "http://qedserver.naocs.com"
+  s.homepage    = "http://napcs.github.io/qedproject/"
   s.summary     = %q{Quickly build a simple web development project for use with QEDServer}
   s.description = %q{Creates a web development project with support for CoffeeScript and Sass, with support for Backbone, Knockout, and more. }
 
@@ -31,11 +31,11 @@ Gem::Specification.new do |s|
     "lib/qedproject/libraries/ember.rb",
     "lib/qedproject/plugins.rb",
     "vendor/backbone/VERSION",
-    "vendor/backbone/backbone-min.js",
+    "vendor/backbone/backbone.js",
     "vendor/backbone/json2.js",
-    "vendor/backbone/underscore-min.js",
+    "vendor/backbone/underscore.js",
     "vendor/jquery/VERSION",
-    "vendor/jquery/jquery-1.9.1.min.js",
+    "vendor/jquery/jquery-1.10.1.min.js",
     "vendor/knockout/VERSION",
     "vendor/knockout/knockout-2.2.1.js",
     "vendor/skeleton/VERSION",
@@ -48,6 +48,7 @@ Gem::Specification.new do |s|
     "vendor/skeleton/favicon.ico",
     "vendor/skeleton/skeleton.css",
     "vendor/jasmine-jquery/jasmine-jquery.js",
+    "vendor/jasmine-jquery/VERSION",
     "vendor/jasmine/lib/jasmine-1.3.1/jasmine-html.js",
     "vendor/jasmine/lib/jasmine-1.3.1/jasmine.css",
     "vendor/jasmine/lib/jasmine-1.3.1/jasmine.js",
@@ -62,7 +63,8 @@ Gem::Specification.new do |s|
     "vendor/mustache/mustache.js",
     "vendor/mustache/VERSION",
     "vendor/angular/VERSION",
-    "vendor/angular/angular-1.0.6.js",
+    "vendor/angular/angular-1.1.5.js",
+    "vendor/angular/angular-resource.js",
     "vendor/ember/ember-1.0.0-rc.1.js",
     "vendor/ember/handlebars-1.0.0-rc.3.js",
     "vendor/ember/VERSION",
@@ -85,16 +87,16 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "net-ssh"
   s.add_runtime_dependency "net-sftp"
   s.add_runtime_dependency "net-scp"
-  s.add_runtime_dependency "coffee-script", ">=2.2.0"
-  s.add_runtime_dependency "sass", ">=3.2.0"
-  s.add_runtime_dependency "jammit", ">=0.6.5"
-  s.add_runtime_dependency "uglifier", ">=1.3.0"
-  s.add_runtime_dependency "rake", ">=0.8.7"
-  s.add_runtime_dependency "guard", ">=1.6.0"
-  s.add_runtime_dependency "guard-jammit", ">=1.0.1"
-  s.add_runtime_dependency "guard-coffeescript", ">=1.2.0"
-  s.add_runtime_dependency "guard-sass", ">=1.0.0"
-  s.add_runtime_dependency "guard-livereload", ">=1.1.0"
+  s.add_runtime_dependency "coffee-script", "~>2.2.0"
+  s.add_runtime_dependency "sass", "~>3.2.0"
+  s.add_runtime_dependency "jammit", "~>0.6.5"
+  s.add_runtime_dependency "uglifier", "~>1.3.0"
+  s.add_runtime_dependency "rake", "~>10.1"
+  s.add_runtime_dependency "guard", "~>1.6.0"
+  s.add_runtime_dependency "guard-jammit", "~>1.0.1"
+  s.add_runtime_dependency "guard-coffeescript", "~>1.2.0"
+  s.add_runtime_dependency "guard-sass", "~>1.0.0"
+  s.add_runtime_dependency "guard-livereload", "~>1.1.0"
   s.add_development_dependency "guard-test"
   s.add_development_dependency "rdoc"
   s.add_development_dependency "mocha", ">=0.13.0"
