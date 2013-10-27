@@ -13,6 +13,14 @@ class ProjectTest < ProjectTestCase
     p.generate
     assert File.exist?(File.join(@folder, "Gemfile"))
   end
+
+  def test_should_add_guard_and_listen_to_gemfile
+    p = QEDProject::Project.new(@folder, :coffeescript => true)
+    p.generate
+    file = Pathname.new(File.join(@folder, "Gemfile"))
+    assert file.read.include?("gem 'listen', '#{QEDProject::DEPENDENCIES[:listen]}'")
+    assert file.read.include?("gem 'guard', '#{QEDProject::DEPENDENCIES[:guard]}'")
+  end
   
   def test_creates_public_folder
     p = QEDProject::Project.new(@folder)
@@ -90,8 +98,6 @@ class ProjectTest < ProjectTestCase
     source = Pathname.new(File.join(@folder, "public", "index.html")).read
     assert source.include?("href=\"stylesheets/app.css\"")
   end
-  
-  
   
   def test_skips_adding_index_page_if_skipped
     p = QEDProject::Project.new(@folder, :skip_index => true)

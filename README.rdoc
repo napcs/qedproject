@@ -183,6 +183,9 @@ Fork, send patches. Keep them small so I can pull them in.
 
 
 = Changes
+2013-10-24 - 0.6.2.1
+* Foreced gem versions in the generated Gemfile
+
 2013-07-19 - 0.6.2
 * Fixed Backbone, Underscore bugs introduced in 0.6.0
 * Fixed a minor issue with dependencies

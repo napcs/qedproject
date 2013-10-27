@@ -29,8 +29,11 @@ class CoffeescriptTest < ProjectTestCase
   def test_should_create_gemfile_with_coffeescript
     p = QEDProject::Project.new(@folder, :coffeescript => true)
     p.generate
-    assert Pathname.new(File.join(@folder, "Gemfile")).read.include?("gem 'guard-coffeescript'")
+    file = Pathname.new(File.join(@folder, "Gemfile"))
+    assert file.read.include?("gem 'coffee-script', '#{QEDProject::DEPENDENCIES[:coffeescript]}'")
+    assert file.read.include?("gem 'guard-coffeescript', '#{QEDProject::DEPENDENCIES[:guard_coffeescript]}'")
   end
+
   
   def test_need_guardfile_with_coffee
     p = QEDProject::Project.new(@folder, :coffeescript => true)

@@ -1,18 +1,22 @@
 source 'https://rubygems.org'
 gem 'qedproject'
-gem 'guard'
+gem 'listen', '<%= QEDProject::DEPENDENCIES[:listen] %>'
+gem 'guard', '<%= QEDProject::DEPENDENCIES[:guard] %>'
 <% if self.sass -%>
-gem 'guard-sass'
+gem 'sass', '<%= QEDProject::DEPENDENCIES[:sass] %>'
+gem 'guard-sass', '<%= QEDProject::DEPENDENCIES[:guard_sass] %>'
 <% end -%>
 <% if self.coffeescript -%>
-gem 'guard-coffeescript'
+gem 'coffee-script', '<%= QEDProject::DEPENDENCIES[:coffeescript] %>'
+gem 'guard-coffeescript', '<%= QEDProject::DEPENDENCIES[:guard_coffeescript] %>'
 <% end -%>
 <% if self.jammit -%>
-gem 'guard-jammit'
-gem 'uglifier'
+gem 'guard-jammit', '<%= QEDProject::DEPENDENCIES[:guard_jammit] %>'
+gem 'jammit', '<%= QEDProject::DEPENDENCIES[:jammit] %>'
+gem 'uglifier', '<%= QEDProject::DEPENDENCIES[:uglifier] %>'
 <% end -%>
 <% if self.livereload -%>
-gem 'guard-livereload'
+gem 'guard-livereload', '<%= QEDProject::DEPENDENCIES[:guard_livereload] %>'
 <% end -%>
 
 group :development do

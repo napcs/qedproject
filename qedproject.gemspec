@@ -87,18 +87,20 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "net-ssh"
   s.add_runtime_dependency "net-sftp"
   s.add_runtime_dependency "net-scp"
-  s.add_runtime_dependency "coffee-script", "~>2.2.0"
-  s.add_runtime_dependency "sass", "~>3.2.0"
-  s.add_runtime_dependency "jammit", "~>0.6.5"
-  s.add_runtime_dependency "uglifier", "~>1.3.0"
-  s.add_runtime_dependency "rake", "~>10.1"
-  s.add_runtime_dependency "guard", "~>1.6.0"
-  s.add_runtime_dependency "guard-jammit", "~>1.0.1"
-  s.add_runtime_dependency "guard-coffeescript", "~>1.2.0"
-  s.add_runtime_dependency "guard-sass", "~>1.0.0"
-  s.add_runtime_dependency "guard-livereload", "~>1.1.0"
+  s.add_runtime_dependency "coffee-script", QEDProject::DEPENDENCIES[:coffeescript]
+  s.add_runtime_dependency "sass", QEDProject::DEPENDENCIES[:sass]
+  s.add_runtime_dependency "jammit", QEDProject::DEPENDENCIES[:jammit]
+  s.add_runtime_dependency "uglifier", QEDProject::DEPENDENCIES[:uglifier]
+  s.add_runtime_dependency "rake", QEDProject::DEPENDENCIES[:rake]
+  s.add_runtime_dependency "guard", QEDProject::DEPENDENCIES[:guard]
+  s.add_runtime_dependency "guard-jammit", QEDProject::DEPENDENCIES[:guard_jammit]
+  s.add_runtime_dependency "guard-coffeescript", QEDProject::DEPENDENCIES[:guard_coffeescript]
+  s.add_runtime_dependency "guard-sass", QEDProject::DEPENDENCIES[:guard_sass]
+  s.add_runtime_dependency "guard-livereload", QEDProject::DEPENDENCIES[:guard_livereload]
   s.add_development_dependency "guard-test"
   s.add_development_dependency "rdoc"
   s.add_development_dependency "mocha", ">=0.13.0"
   
 end
+
+

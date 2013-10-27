@@ -1,6 +1,12 @@
 require 'project_test_helper'
 
 class LiveReloadTest < ProjectTestCase
+  def test_should_create_guardfile_with_livereload
+    p = QEDProject::Project.new(@folder, :livereload => true)
+    p.generate
+    file = Pathname.new(File.join(@folder, "Gemfile"))
+    assert file.read.include?("gem 'guard-livereload', '#{QEDProject::DEPENDENCIES[:guard_livereload]}'")
+  end
   
   def test_guardfile_includes_livereload_watcher_for_index
     p = QEDProject::Project.new(@folder, :livereload => true)
